@@ -1,0 +1,265 @@
+/* *{ border: 1px solid red; } */
+h1 {
+  padding: 20px;
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.fancy {
+  font-size: 2rem;
+  color: white;
+  font-weight: bold;
+}
+.container {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: black;
+  overflow: hidden;
+  width: 0;
+  height: 100%;
+  transition: 0.5s ease;
+}
+
+.container:hover .overlay {
+  width: 100%;
+  opacity: 80%;
+}
+
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+}
+
+main {
+  display: flex;
+}
+
+section {
+  width: 100%;
+  margin-top: 20px;
+  margin-left: 5%;
+}
+
+.search {
+  width: 30vw;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.card-container {
+  background-color: lightgray;
+  padding: 20px;
+  border-radius: 10px;
+  margin-right: 20px;
+  margin-top: 10px;
+}
+
+.card-info {
+  display: flex;
+  align-items: center;
+}
+
+.card-image {
+  width: 100%;
+  height: auto;
+  max-width: 10vw;
+}
+
+.title-date {
+  margin-left: 5px;
+  padding-right: 10px;
+  width: 15%;
+}
+
+.card-title {
+  margin-bottom: 0;
+  margin-left: 10px;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+.date {
+  margin-left: 10px;
+}
+
+.description {
+  width: 50%;
+}
+
+.changeStatusUser {
+  margin-left: auto;
+}
+.myRating {
+  margin-left: auto;
+}
+
+.results {
+  margin: 20px;
+}
+
+.results-container {
+  background-color: lightgray;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px;
+}
+
+.error {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.container-user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5%;
+  background-color: lightgray;
+  margin-left: 30%;
+  margin-right: 30%;
+  padding: 50px;
+  border-radius: 10px;
+}
+
+.container-user h2 {
+  padding-bottom: 20px;
+}
+
+.form-group {
+  display: flex;
+  justify-content: space-between;
+  margin: 2px;
+}
+
+.form-group label {
+  margin-right: 5px;
+}
+
+.submit-button {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.login {
+  width: 10vw;
+  margin-left: 10px;
+}
+
+.login-input {
+  width: auto;
+}
+
+.search-dropdown {
+  border-radius: 5px;
+  background-color: transparent;
+}
+
+#search-button {
+  border-radius: 5px;
+  background-color: #2596be;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: white;
+}
+
+/* Modal Header */
+.modal-header {
+  padding: 2px 16px;
+  background-color: #ec1616;
+  color: white;
+}
+
+/* Modal Body */
+.modal-body {
+  padding: 2px 16px;
+}
+
+/* The Modal (background) */
+.modal {
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  top: 0;
+  display: block;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 80%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Add Animation */
+@keyframes animatetop {
+  from {
+      top: -300px;
+      opacity: 0;
+  }
+  to {
+      top: 0;
+      opacity: 1;
+  }
+}
+
+.hide {
+  display: none;
+}
+
+.empty-list {
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+}
+
