@@ -1,7 +1,7 @@
 import './App.css';
 import Header from './components/Header';
 import Homepage from './views/Homepage';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch/* , Redirect */ } from 'react-router-dom';
 import SignUp from './views/SignUp'
 import React from 'react';
 

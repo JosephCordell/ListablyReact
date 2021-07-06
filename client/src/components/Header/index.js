@@ -24,13 +24,13 @@ const Header = () => {
                 <div className={'collapse navbar-collapse'} id="navbarNav">
                     <ul className={'navbar-nav'}>
                         <li className={'nav-item'}>
-                            <a className={'nav-link'} /*  href="/trending-movies" */>Movies</a>
+                            <a className={'nav-link'}  href="/trending-movies" >Movies</a>
                         </li>
                         <li className={'nav-item'}>
-                            <a className={'nav-link'} /*  href="/trending-tvshows" */>TV Shows</a>
+                            <a className={'nav-link'}   href="/trending-tvshows" >TV Shows</a>
                         </li>
                         <li className={'nav-item'}>
-                            <a className={'nav-link'} /*  href="/user" */>My Lists</a>
+                            <a className={'nav-link'}   href="/user" >My Lists</a>
                         </li>
                     </ul>
                 </div>
@@ -63,7 +63,7 @@ const Header = () => {
                             </li>
 
                             <li className={'nav-item'}>
-                                <a className={'nav-link'} href="" classID={'logout'}>
+                                <a className={'nav-link'} href="/" classID={'logout'}>
                                     Logout
                                 </a>
                             </li>
