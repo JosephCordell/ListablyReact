@@ -4,6 +4,7 @@ import Homepage from './views/Homepage';
 import { Route, Switch/* , Redirect */ } from 'react-router-dom';
 import SignUp from './views/SignUp'
 import React from 'react';
+import TrendingMovies from './views/TrendingMovies';
 
 const App =  () => {
   return (
@@ -11,6 +12,8 @@ const App =  () => {
     <React.Fragment>
   <Header />
   <Switch> 
+
+    <Route exact path='/trending-movies' component={TrendingMovies} />
     <Route exact path='/signup' component={SignUp} />
     <Route path = '/' component={Homepage} />
   </Switch>
