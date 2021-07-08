@@ -21,6 +21,7 @@
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
+		"axios": "^0.21.1",
 		"compression": "^1.7.4",
 		"concurrently": "^6.2.0",
 		"connect-session-sequelize": "^7.1.1",
