@@ -5,6 +5,7 @@ import { Route, Switch/* , Redirect */ } from 'react-router-dom';
 import SignUp from './views/SignUp'
 import React from 'react';
 import TrendingMovies from './views/TrendingMovies';
+import TrendingTv from './views/TrendingTv';
 
 const App =  () => {
   return (
@@ -14,6 +15,7 @@ const App =  () => {
   <Switch> 
 
     <Route exact path='/trending-movies' component={TrendingMovies} />
+    <Route exact path='/trending-tv' component={TrendingTv} />
     <Route exact path='/signup' component={SignUp} />
     <Route path = '/' component={Homepage} />
   </Switch>
