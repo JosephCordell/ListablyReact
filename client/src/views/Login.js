@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-
-import validate from '../js/validateInfo'
+import useForm from '../js/useForm';
+import validate from '../js/validateInfo';
 
 export default function SignIn() {
     const [errors, setErrors] = useState({});
