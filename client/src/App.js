@@ -6,6 +6,7 @@ import SignUp from './views/SignUp'
 import SearchResults from './views/SearchResults'
 import React from 'react';
 import TrendingMovies from './views/TrendingMovies';
+import TrendingTv from './views/TrendingTv';
 
 const App =  () => {
   return (
@@ -15,6 +16,7 @@ const App =  () => {
   <Switch> 
 
     <Route exact path='/trending-movies' component={TrendingMovies} />
+    <Route exact path='/trending-tv' component={TrendingTv} />
     <Route exact path='/signup' component={SignUp} />
     <Route path='/results' component={SearchResults} />
     <Route path = '/' component={Homepage} />
