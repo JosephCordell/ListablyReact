@@ -1,9 +1,11 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import SearchBar from '../SearchBar';
 import './style.css';
 
-const Header = ({loggedIn}) => {
+
+const Header = ({user, setUser, loggedIn}) => {
+
+
 
     return (
         <nav className={'navbar navbar-expand-lg navbar-light'} style={{ backgroundColor: '#e3f2fd' }}>
@@ -33,22 +35,7 @@ const Header = ({loggedIn}) => {
                         </li>
                     </ul>
                 </div>
-                <div className={'search'}>
-                    <div className={'input-group mb-3'}>
-                        <select className={'search-dropdown'}>
-                            <option classID={'dropdown'} className={'dropdown-item'} value="1">
-                                Movies
-                            </option>
-                            <option className={'dropdown-item'} classID={'dropdown'} value="2">
-                                TV Shows
-                            </option>
-                        </select>
-                        <input type="text" className={'form-control'} classID={'search-input'} aria-label="Text input with dropdown button" />
-                        <button classID={'search-button'}>
-                            <FontAwesomeIcon icon={faSearch} />
-                        </button>
-                    </div>
-                </div>
+                <SearchBar user = {user} setUser = {setUser}/>
             </div>
 
             {loggedIn ? (

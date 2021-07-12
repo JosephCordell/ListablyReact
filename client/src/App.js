@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Homepage from './views/Homepage';
 import { Route, Switch /* , Redirect */ } from 'react-router-dom';
 import SignUp from './views/SignUp';
+import SearchResults from './views/SearchResults';
 import TrendingMovies from './views/TrendingMovies';
 import Login from './views/Login';
 import TrendingTv from './views/TrendingTv';
@@ -34,14 +35,16 @@ const App = () => {
 
     return (
         <React.Fragment>
-            <Header loggedIn={user.loggedIn} />
+            <Header user={user} setUser={setUser} loggedIn={user.loggedIn} />
             <Switch>
                 <Route exact path="/trending-movies" component={TrendingMovies} />
                 <Route exact path="/trending-tv" component={TrendingTv} />
                 <Route exact path="/signup" component={SignUp} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/user" component={User} />
-
+                <Route path="/results" >
+                  <SearchResults user={user} setUser={setUser}/>
+                </Route>
                 <Route path="/" component={Homepage} />
             </Switch>
         </React.Fragment>
