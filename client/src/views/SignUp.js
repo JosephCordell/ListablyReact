@@ -1,35 +1,63 @@
 import React, { useState } from 'react';
-import useForm from '../js/useForm';
-import validate from '../js/validateInfo';
+import validate from '../js/signUpValidate';
 
 export default function SignUp() {
-    const [name, setName] = useState('');
+    const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [password2, setPassword2] = useState('');
+    const [errors, setErrors] = useState({})
+    const [hideModal, setHideModal] = useState(true)
 
-    const { handleChange, values, handleSubmit, errors } = useForm(validate);
+    const handleSignUp = (e) => {
+        e.preventDefault()
+
+        const fetchData = async () => {
+            console.log(username, email, password);
+            const response = await fetch('/api/users/signup', {
+                    method: 'POST',
+                    body: JSON.stringify({ username, email, password }),
+                    headers: { 'Content-type': 'application/json' },
+                });
+                console.log('Signed up?');
+    
+                if (response.ok) {
+                    document.location.replace('/user');
+                } else {
+                    setHideModal(false)
+                    return;
+                }  
+        };
+        const response = validate({ username, email, password, password2 });
+        setErrors(response)
+        if (Object.keys(response).length > 0) {
+        } else {
+            fetchData();
+        }
+    };
+
+
 
     return (
         <React.Fragment>
-            {/*       <div id='myModal' className={'modal hide'}>
-        <div className={'modal-content'}>
-          <div className={'modal-header'}>
-            <span id='modal-close' className={'close'}>
-              &times;
-            </span>
-            <h2>Error</h2>
-          </div>
-          <div className={'modal-body'}>
-            <p>Email already in use or password less than 8 characters</p>
-          </div>
-        </div>
-      </div> */}
+            <div id="myModal" className={hideModal ? 'modal hide': 'modal'}>
+                <div className={'modal-content'}>
+                    <div className={'modal-header'}>
+                        <span id="modal-close" className={'close'} onClick={()=> setHideModal(true)}>
+                            &times;
+                        </span>
+                        <h2>Error</h2>
+                    </div>
+                    <div className={'modal-body'}>
+                        <p>Email already in use</p>
+                    </div>
+                </div>
+            </div>
 
             <div className={'container-user'}>
                 <h2>Signup</h2>
 
-                <form className={'form signup-form'} onSubmit={handleSubmit}>
+                <form className={'form signup-form'} onSubmit={(e) => handleSignUp(e)}>
                     <div className="form-group">
                         <label htmlFor="username" className="form-label">
                             Username:
@@ -40,8 +68,8 @@ export default function SignUp() {
                             name="username"
                             className="form-input"
                             placeholder="Enter your username"
-                            value={values.username}
-                            onChange={handleChange}
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
                         />
                         {errors.username && <p>{errors.username}</p>}
                     </div>
@@ -55,8 +83,8 @@ export default function SignUp() {
                             name="email"
                             className="form-input"
                             placeholder="Enter your email"
-                            value={values.email}
-                            onChange={handleChange}
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                         />
                         {errors.email && <p>{errors.email}</p>}
                     </div>
@@ -70,8 +98,8 @@ export default function SignUp() {
                             name="password"
                             className="form-input"
                             placeholder="Enter your password"
-                            value={values.password}
-                            onChange={handleChange}
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
                         />
                         {errors.password && <p>{errors.password}</p>}
                     </div>
@@ -85,8 +113,8 @@ export default function SignUp() {
                             name="password2"
                             className="form-input"
                             placeholder="Re-enter your password"
-                            value={values.password2}
-                            onChange={handleChange}
+                            value={password2}
+                            onChange={(e) => setPassword2(e.target.value)}
                         />
                         {errors.password2 && <p>{errors.password2}</p>}
                     </div>
@@ -98,9 +126,9 @@ export default function SignUp() {
                     </div>
                 </form>
             </div>
-            <div style={{ 'text-align': 'center' }}>
+            <div style={{ textAlign: 'center' }}>
                 Have an account?{' '}
-                <a href="/login" style={{ color: 'blue;' }}>
+                <a href="/login" style={{ color: 'blue' }}>
                     Sign in!
                 </a>
             </div>

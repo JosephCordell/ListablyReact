@@ -1,8 +1,29 @@
 const router = require('express').Router();
 const User = require('../models/User');
+const jwt = require('jsonwebtoken');
 
 router.post('/login', async (req, res) => {
+    if (req.headers.authorization) {
+        const token = req.headers.authorization;
+        console.log(token.slice(7));
+        var decoded = jwt.verify(token.slice(7), process.env.JWTSECRET);
+        console.log(decoded, Date.now()/1000);
+
+        if (decoded.exp >  Date.now()/1000) {
+            const userData = await User.findOne({ where: { id: decoded.data } });
+            console.log(userData);
+            if (Object.keys(userData).length > 1 ) {
+                res.status(200).json({ todo: userData.todo, ratings: userData.ratings, logged_in: true });
+                return 
+            }
+        } 
+            res.status(401)
+        return
+    }
+
     try {
+        console.log(req.headers);
+
         const userData = await User.findOne({ where: { email: req.body.email } });
 
         if (!userData) {
@@ -21,7 +42,9 @@ router.post('/login', async (req, res) => {
             req.session.user_id = userData.id;
             req.session.logged_in = true;
 
-            res.status(200).json({ user: userData, message: 'You are now logged in!' });
+            req.session.token = jwt.sign({ data: userData.id }, process.env.JWTSECRET, { expiresIn: 60 * 60 });
+
+            res.status(200).json({ todo: userData.todo, ratings: userData.ratings, logged_in: true, token: req.session.token });
         });
     } catch (err) {
         res.status(400).json(err);
@@ -39,15 +62,16 @@ router.post('/logout', (req, res) => {
     }
 });
 
-router.post('/', async (req, res) => {
-    console.log('1');
+// Creates User
+router.post('/signup', async (req, res) => {
     try {
         const userData = await User.create(req.body);
         req.session.save(() => {
             req.session.user_id = userData.id;
             req.session.logged_in = true;
+            req.session.token = jwt.sign({ data: userData.id }, process.env.JWTSECRET, { expiresIn: 60 * 60 });
 
-            res.status(200).json(userData);
+            res.status(200).json({ token: req.session.token });
         });
     } catch (err) {
         res.status(400).json(err);

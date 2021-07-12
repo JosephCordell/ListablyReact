@@ -3,8 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import './style.css';
 
-const Header = () => {
-    const loggedIn = false;
+const Header = ({loggedIn}) => {
 
     return (
         <nav className={'navbar navbar-expand-lg navbar-light'} style={{ backgroundColor: '#e3f2fd' }}>
@@ -27,7 +26,7 @@ const Header = () => {
                             <a className={'nav-link'}  href="/trending-movies" >Movies</a>
                         </li>
                         <li className={'nav-item'}>
-                            <a className={'nav-link'}   href="/trending-tvshows" >TV Shows</a>
+                            <a className={'nav-link'}   href="/trending-tv" >TV Shows</a>
                         </li>
                         <li className={'nav-item'}>
                             <a className={'nav-link'}   href="/user" >My Lists</a>

@@ -8,8 +8,9 @@ const useForm = (validate) => {
         password2: '',
     });
 
-    const [errors, setErrors] = useState({});
-    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [ errors, setErrors ] = useState({});
+    const [ signingUp, setSigningUp ] = useState(false);
+    const [ loggingIn, setLoggingIn ] = useState(false);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -19,15 +20,22 @@ const useForm = (validate) => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSignUp = (e) => {
         e.preventDefault();
 
         setErrors(validate(values));
-        setIsSubmitting(true);
+        setSigningUp(true);
+    };
+
+    const handleLogIn = (e) => {
+        e.preventDefault();
+
+        setErrors(validate(values));
+        setLoggingIn(true);
     };
 
     useEffect(() => {
-        if (Object.keys(errors).length === 0 && isSubmitting) {
+        if (Object.keys(errors).length === 0 && signingUp) {
             const fetchData = async () => {
                 const { username, email, password } = values;
                 console.log(username, email, password);
@@ -47,10 +55,13 @@ const useForm = (validate) => {
                 }  */
             };
             fetchData();
+        } else if (Object.keys(errors).length === 0 && loggingIn) {
+            const { email, password } = values;
+            console.log('signin');
         }
     }, [errors]);
 
-    return { handleChange, values, handleSubmit, errors };
+    return { handleChange, values, handleSignUp, errors, handleLogIn };
 };
 
 export default useForm;

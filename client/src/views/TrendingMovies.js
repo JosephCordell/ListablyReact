@@ -5,7 +5,7 @@ require('dotenv').config();
 
 const movieDbApiKey = process.env.REACT_APP_MOVIE_DB_API_KEY;
 
-export default function TrendingMovies({ movieResults }) {
+export default function TrendingMovies() {
     const [movies, setMovies] = useState([]);
     const [loading, setLoading] = useState(true);
 

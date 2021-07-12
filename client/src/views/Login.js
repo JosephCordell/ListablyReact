@@ -1,46 +1,47 @@
 import React, { useState } from 'react';
 import useForm from '../js/useForm';
-import validate from '../js/validateInfo';
+import validate from '../js/loginValidate';
 
 export default function SignIn() {
-    const [errors, setErrors] = useState({});
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
 
-        //setErrors(validate(values));
-        console.log(e);
-    }
+    const { handleChange, values, handleLogIn, errors } = useForm(validate);
 
     return (
         <React.Fragment>
             <div className='container-user'>
                 <h2>Login</h2>
 
-                <form className='loginform' onSubmit={handleSubmit}>
-                    <div className='form-group'>
-                        <label for="email">Email: </label>
+                <form className='loginform' onSubmit={handleLogIn}>
+                <div className="form-group">
+                        <label htmlFor="email" className="form-label">
+                            Email:
+                        </label>
                         <input
-                            type="email"
                             id="email"
-                            value={email}
-                            name="username"
-                            className={'form-control form-control-sm login-input'}
-                            placeholder="Enter Email"
+                            type="email"
+                            name="email"
+                            className="form-input"
+                            placeholder="Enter your email"
+                            value={values.email}
+                            onChange={handleChange}
                         />
+                        {errors.email && <p>{errors.email}</p>}
                     </div>
-                    <div className={'form-group'}>
-                        <label for="password">Password: </label>
+                    <div className="form-group">
+                        <label htmlFor="password" className="form-label">
+                            Password:
+                        </label>
                         <input
-                            type="password"
                             id="password"
+                            type="password"
                             name="password"
-                            className={'form-control form-control-sm login-input'}
-                            placeholder="Enter Password"
-                            value={password}
+                            className="form-input"
+                            placeholder="Enter your password"
+                            value={values.password}
+                            onChange={handleChange}
                         />
+                        {errors.password && <p>{errors.password}</p>}
                     </div>
                     <div className={'submit-button'}>
                         <button type="submit" className={'btn btn-primary btn-block'}>
