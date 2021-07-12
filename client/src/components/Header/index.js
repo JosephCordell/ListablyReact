@@ -9,7 +9,7 @@ const Header = ({user, setUser}) => {
     return (
         <nav className={'navbar navbar-expand-lg navbar-light'} style={{ backgroundColor: '#e3f2fd' }}>
             <div className={'container-fluid'}>
-                <a className={'navbar-brand'} /* href="/" */>Listably</a>
+                <a className={'navbar-brand'} href="/">Listably</a>
                 <button
                     className={'navbar-toggler'}
                     type={'button'}
@@ -27,7 +27,7 @@ const Header = ({user, setUser}) => {
                             <a className={'nav-link'}  href="/trending-movies" >Movies</a>
                         </li>
                         <li className={'nav-item'}>
-                            <a className={'nav-link'}   href="/trending-tvshows" >TV Shows</a>
+                            <a className={'nav-link'}   href="/trending-tv" >TV Shows</a>
                         </li>
                         <li className={'nav-item'}>
                             <a className={'nav-link'}   href="/user" >My Lists</a>
