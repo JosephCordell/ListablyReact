@@ -2,7 +2,7 @@ import React from 'react';
 import SearchBar from '../SearchBar';
 import './style.css';
 
-const Header = () => {
+const Header = ({user, setUser}) => {
     const loggedIn = false;
 
 
@@ -34,7 +34,7 @@ const Header = () => {
                         </li>
                     </ul>
                 </div>
-                <SearchBar />
+                <SearchBar user = {user} setUser = {setUser}/>
             </div>
 
             {loggedIn ? (
