@@ -49,25 +49,34 @@ export default function SearchResults({ user, setUser }) {
             <TabFilter tab={tab} setTab={setTab} />
 
             {tab === 'Movies' ?
-                movies.map((movie) =>
-                    (<MovieCard movie={movie} key={movie.id} />)
-                ) :
-                tab === 'TV shows' ? tv.map((tv) =>
-                    (<TVCard tv={tv} key={tv.id} />)) :
-                    <>
-                    <div className={'results'}> <h4>Movies</h4> </div>
+                <>
                     {
                         movies.length > 0 ? movies.map((movie) =>
                             (<MovieCard movie={movie} key={movie.id} />)
                         ) : <p>No movies found</p>
                     }
-                
-                    <div className={'results'}> <h4>TV Shows</h4> </div>
-                    {
+                </> :
+                tab === 'TV shows' ?
+                    <>{
                         tv.length > 0 ? tv.map((tv) => (
                             <TVCard tv={tv} key={tv.id} />
                         )) : <p>No TV shows found</p>
                     }
+                    </> :
+                    <>
+                        <div className={'results'}> <h4>Movies</h4> </div>
+                        {
+                            movies.length > 0 ? movies.map((movie) =>
+                                (<MovieCard movie={movie} key={movie.id} />)
+                            ) : <p>No movies found</p>
+                        }
+
+                        <div className={'results'}> <h4>TV Shows</h4> </div>
+                        {
+                            tv.length > 0 ? tv.map((tv) => (
+                                <TVCard tv={tv} key={tv.id} />
+                            )) : <p>No TV shows found</p>
+                        }
                     </>
             }
 
