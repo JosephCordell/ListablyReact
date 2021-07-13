@@ -15,8 +15,6 @@ export default function SearchResults({ user, setUser }) {
     const search = user.query;
     const loading = user.searchLoad;
 
-
-
     const fetchData = (search) => {
 
         const urlMovieResults = `https://api.themoviedb.org/3/search/movie?api_key=${movieDbApiKey}&query=` + search;
@@ -41,7 +39,6 @@ export default function SearchResults({ user, setUser }) {
         }
     }, [search])
 
-    const setAllMovies = ``
     if (loading && search !== "") { return 'Loading ...' }
     else if (loading) { return 'Please input a term' };
     return (
@@ -72,8 +69,6 @@ export default function SearchResults({ user, setUser }) {
                         )) : <p>No TV shows found</p>
                     }
                     </>
-
-                    
             }
 
         </React.Fragment>
