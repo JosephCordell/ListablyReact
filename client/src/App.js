@@ -1,5 +1,6 @@
 import './App.css';
 import Header from './components/Header';
+import Footer from './components/Footer'; 
 import Homepage from './views/Homepage';
 import { Route, Switch/* , Redirect */ } from 'react-router-dom';
 import SignUp from './views/SignUp'
@@ -17,6 +18,7 @@ const App =  () => {
     <Route exact path='/signup' component={SignUp} />
     <Route path = '/' component={Homepage} />
   </Switch>
+  <Footer />
   </React.Fragment>
     )
 }
