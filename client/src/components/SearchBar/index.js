@@ -11,7 +11,6 @@ export default function SearchBar({ user, setUser }) {
         currentTarget.preventDefault();
         setUser({...user, query})
         history.push("/results");
-        console.log(user, query);
     }
 
 
