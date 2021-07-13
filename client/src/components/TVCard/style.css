@@ -1,0 +1,38 @@
+.results-container {
+    background-color: lightgray;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px;
+}
+
+.card-info {
+    display: flex;
+    align-items: center;
+}
+
+.card-image {
+    width: 100%;
+    height: auto;
+    max-width: 10vw;
+}
+
+.title-date {
+    margin-left: 5px;
+    padding-right: 10px;
+    width: 15%;
+}
+
+.card-title {
+    margin-bottom: 0;
+    margin-left: 10px;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.description {
+    width: 50%;
+}
+
+.myRating {
+    margin-left: auto;
+}
