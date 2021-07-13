@@ -19,9 +19,10 @@ export default function SignUp() {
                     body: JSON.stringify({ username, email, password }),
                     headers: { 'Content-type': 'application/json' },
                 });
-                console.log('Signed up?');
     
                 if (response.ok) {
+                    localStorage.setItem(`loggedIn`, true);
+                    localStorage.setItem(`token`, response.data.token )
                     document.location.replace('/user');
                 } else {
                     setHideModal(false)

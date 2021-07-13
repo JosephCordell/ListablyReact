@@ -29,8 +29,8 @@
 		"dotenv": "^9.0.2",
 		"express": "^4.17.1",
 		"express-session": "^1.17.2",
-		"jsonwebtoken": "^8.5.1",
 		"if-env": "^1.0.4",
+		"jsonwebtoken": "^8.5.1",
 		"mysql2": "^2.2.5",
 		"nodemon": "^2.0.9",
 		"sequelize": "^6.6.5"
@@ -47,5 +47,6 @@
 		"singleQuote": true,
 		"tabWidth": 4,
 		"printWidth": 160
-	}
+	},
+	"proxy": "http://localhost:3001"
 }
