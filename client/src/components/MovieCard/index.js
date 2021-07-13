@@ -4,7 +4,6 @@ import ChangeStatus from '../ChangeStatus';
 export default function MovieCard({ movie }) {
     return (
         <div key={movie.id} className={'results-container'}>
-            {/* {console.log(movie)} */}
             <div
                 className={'card-info'}
                 data-title={movie.title}

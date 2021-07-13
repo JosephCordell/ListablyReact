@@ -1,9 +1,26 @@
+import axios from 'axios';
 import React from 'react';
 import SearchBar from '../SearchBar';
 import './style.css';
 
-const Header = ({user, setUser}) => {
-    const loggedIn = false;
+
+const Header = ({user, setUser, loggedIn}) => {
+
+    const logout = async () => {
+        const response = await axios('/api/users/logout', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+        });
+        console.log('logged out');
+    
+        if (response.ok) {
+            localStorage.removeItem('token')
+            localStorage.removeItem('loggedIn')
+            document.location.replace('/');
+        } else {
+            return;
+        }
+    };
 
 
     return (
@@ -47,8 +64,8 @@ const Header = ({user, setUser}) => {
                                 </a>
                             </li>
 
-                            <li className={'nav-item'}>
-                                <a className={'nav-link'} href="/" classID={'logout'}>
+                            <li onClick={logout} className={'nav-item'}>
+                                <a className={'nav-link'} /* href="/" */ classID={'logout'} >
                                     Logout
                                 </a>
                             </li>

@@ -16,7 +16,7 @@ User.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        name: {
+        username: {
             type: DataTypes.STRING,
             allowNull: false,
         },
@@ -42,7 +42,7 @@ User.init(
         ratings: {
             type: DataTypes.STRING,
             allowNull: true,
-        },
+        }
     },
     {
         hooks: {
