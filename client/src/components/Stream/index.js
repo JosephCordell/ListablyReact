@@ -15,6 +15,7 @@ export default function Stream({ movieID, tvID }) {
     
     const streamMovieAPI = `https://api.themoviedb.org/3/movie/${movieID}/watch/providers?api_key=${movieDbApiKey}`
     const movieResults = (movieID) => {
+        const streamMovieAPI = `https://api.themoviedb.org/3/movie/${movieID}/watch/providers?api_key=${movieDbApiKey}`
         axios.get(streamMovieAPI).then((request) => {
             setMovie(true)
             setStream({ ...request.data.results.US })
