@@ -1,8 +1,12 @@
 import React from 'react';
 import ChangeStatus from '../ChangeStatus';
+import Stream from '../Stream';
+import './style.css';
 
 export default function MovieCard({ movie }) {
+
     return (
+
         <div key={movie.id} className={'results-container'}>
             <div
                 className={'card-info'}
@@ -20,7 +24,7 @@ export default function MovieCard({ movie }) {
                     <div className={'date'}>({movie.release_date})</div>
                 </div>
                 <div className={'description'}> {movie.overview} </div>
-
+                <Stream movieID={movie.id}/>
                 <div className={'myRating'}></div>
             < ChangeStatus />
             </div>
