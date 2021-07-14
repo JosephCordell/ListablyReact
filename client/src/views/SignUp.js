@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import validate from '../js/signUpValidate';
 
@@ -6,45 +7,47 @@ export default function SignUp() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [password2, setPassword2] = useState('');
-    const [errors, setErrors] = useState({})
-    const [hideModal, setHideModal] = useState(true)
+    const [errors, setErrors] = useState({});
+    const [hideModal, setHideModal] = useState(true);
 
     const handleSignUp = (e) => {
-        e.preventDefault()
+        e.preventDefault();
 
         const fetchData = async () => {
             console.log(username, email, password);
-            const response = await fetch('/api/users/signup', {
-                    method: 'POST',
-                    body: JSON.stringify({ username, email, password }),
-                    headers: { 'Content-type': 'application/json' },
-                });
-    
-                if (response.ok) {
+            await fetch('/api/users/signup', {
+                method: 'POST',
+                body: JSON.stringify({ username, email, password }),
+                headers: { 'Content-type': 'application/json' },
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log(data);
+
                     localStorage.setItem(`loggedIn`, true);
-                    localStorage.setItem(`token`, response.data.token )
+                    localStorage.setItem(`token`, data.token);
                     document.location.replace('/user');
-                } else {
-                    setHideModal(false)
-                    return;
-                }  
+                })
+                .catch((err) => {
+                    console.log(err);
+                    setHideModal(false);
+                });
+
         };
         const response = validate({ username, email, password, password2 });
-        setErrors(response)
+        setErrors(response);
         if (Object.keys(response).length > 0) {
         } else {
             fetchData();
         }
     };
 
-
-
     return (
         <React.Fragment>
-            <div id="myModal" className={hideModal ? 'modal hide': 'modal'}>
+            <div id="myModal" className={hideModal ? 'modal hide' : 'modal'}>
                 <div className={'modal-content'}>
                     <div className={'modal-header'}>
-                        <span id="modal-close" className={'close'} onClick={()=> setHideModal(true)}>
+                        <span id="modal-close" className={'close'} onClick={() => setHideModal(true)}>
                             &times;
                         </span>
                         <h2>Error</h2>
