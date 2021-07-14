@@ -65,7 +65,9 @@ export default function Stream({ movieID, tvID }) {
     return (
 
         <React.Fragment>
+            <div className='logo-container'>
             {provider.map(logo => <img src={`https://image.tmdb.org/t/p/original/${logo}`} alt="provider_logo" className={'provider-logo'} key={logo}/>)}
+            </div>
         </React.Fragment>
     )
 }
