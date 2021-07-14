@@ -16,7 +16,7 @@ export default function TrendingMovies() {
         async function fetchData() {
             await axios.get(trendingMoviesApi).then((request) => {
                 setMovies(request.data.results);
-                 setLoading(false);
+                setLoading(false);
             });
         }
         fetchData();
@@ -30,8 +30,8 @@ export default function TrendingMovies() {
                 <h2>Top 25 Trending Movies</h2>
             </div>
 
-                       {movies.map((movie) => (
-                <MovieCard movie={ movie } key={movie.id}/>
+            {movies.map((movie) => (
+                <MovieCard movie={movie} key={movie.id} />
             ))}
         </React.Fragment>
     );
