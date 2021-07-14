@@ -52,25 +52,29 @@ router.post('/login', async (req, res) => {
 });
 
 router.post('/logout', (req, res) => {
+    //res.send('not working')
+    console.log('logging out');
     if (req.session.logged_in) {
         req.session.logged_in = false;
         req.session.destroy(() => {
             res.status(204).end();
         });
     } else {
-        res.status(404).end();
+        res.status(204).end();
     }
 });
 
+
 // Creates User
 router.post('/signup', async (req, res) => {
+    console.log('signing up');
     try {
         const userData = await User.create(req.body);
         req.session.save(() => {
             req.session.user_id = userData.id;
             req.session.logged_in = true;
             req.session.token = jwt.sign({ data: userData.id }, process.env.JWTSECRET, { expiresIn: 60 * 60 });
-
+            //console.log(req.session.token);
             res.status(200).json({ token: req.session.token });
         });
     } catch (err) {

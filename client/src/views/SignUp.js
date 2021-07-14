@@ -1,108 +1,53 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import validate from '../js/signUpValidate';
 
 export default function SignUp() {
-<<<<<<< Updated upstream
-=======
-<<<<<<< Updated upstream
-    const [ name, setName ] = useState('')
-    const [ email, setEmail ] = useState('')
-    const [ password, setPassword ] = useState('')
-
-  return (
-    <React.Fragment>
-      <div id='myModal' className={'modal hide'}>
-        <div className={'modal-content'}>
-          <div className={'modal-header'}>
-            <span id='modal-close' className={'close'}>
-              &times;
-            </span>
-            <h2>Error</h2>
-          </div>
-          <div className={'modal-body'}>
-            <p>Email already in use or password less than 8 characters</p>
-          </div>
-        </div>
-      </div>
-
-      <div className={'container-user'}>
-        <h2>Signup</h2>
-
-        <form className={'form signup-form'}>
-          <div className={'form-group'}>
-            <label for='name-signup'>name:</label>
-            <input className={'form-input'} value ={name} onChange={(event) => setName(event.target.value)} type='text' id='name-signup' />
-          </div>
-          <div className={'form-group'}>
-            <label for='email-signup'>email:</label>
-            <input className={'form-input'} value ={email} onChange={(event) => setEmail(event.target.value)} type='text' id='email-signup' />
-          </div>
-          <div className={'form-group'}>
-            <label for='password-signup'>password:</label>
-            <input className={'form-input'} value ={password} onChange={(event) => setPassword(event.target.value)} type='password' id='password-signup' />
-          </div>
-          <div className={'submit-button'}>
-            <button className={'btn btn-primary'} type='submit'>
-              Sign Up
-            </button>
-          </div>
-        </form>
-      </div>
-
-    </React.Fragment>
-  );
-=======
->>>>>>> Stashed changes
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [password2, setPassword2] = useState('');
-    const [errors, setErrors] = useState({})
-    const [hideModal, setHideModal] = useState(true)
+    const [errors, setErrors] = useState({});
+    const [hideModal, setHideModal] = useState(true);
 
     const handleSignUp = (e) => {
-        e.preventDefault()
+        e.preventDefault();
 
         const fetchData = async () => {
             console.log(username, email, password);
-            const response = await fetch('/api/users/signup', {
-                    method: 'POST',
-                    body: JSON.stringify({ username, email, password }),
-                    headers: { 'Content-type': 'application/json' },
-                });
-    
-                if (response.ok) {
-<<<<<<< Updated upstream
+            await fetch('/api/users/signup', {
+                method: 'POST',
+                body: JSON.stringify({ username, email, password }),
+                headers: { 'Content-type': 'application/json' },
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log(data);
+
                     localStorage.setItem(`loggedIn`, true);
-                    localStorage.setItem(`token`, response.data.token )
+                    localStorage.setItem(`token`, data.token);
                     document.location.replace('/user');
-=======
-                    console.log(response);
-                    localStorage.setItem(`loggedIn`, true);
-                    //localStorage.setItem(`token`, response.data.token )
-                    //document.location.replace('/user');
->>>>>>> Stashed changes
-                } else {
-                    setHideModal(false)
-                    return;
-                }  
+                })
+                .catch((err) => {
+                    console.log(err);
+                    setHideModal(false);
+                });
+
         };
         const response = validate({ username, email, password, password2 });
-        setErrors(response)
+        setErrors(response);
         if (Object.keys(response).length > 0) {
         } else {
             fetchData();
         }
     };
 
-
-
     return (
         <React.Fragment>
-            <div id="myModal" className={hideModal ? 'modal hide': 'modal'}>
+            <div id="myModal" className={hideModal ? 'modal hide' : 'modal'}>
                 <div className={'modal-content'}>
                     <div className={'modal-header'}>
-                        <span id="modal-close" className={'close'} onClick={()=> setHideModal(true)}>
+                        <span id="modal-close" className={'close'} onClick={() => setHideModal(true)}>
                             &times;
                         </span>
                         <h2>Error</h2>
@@ -193,8 +138,4 @@ export default function SignUp() {
             </div>
         </React.Fragment>
     );
-<<<<<<< Updated upstream
-=======
->>>>>>> Stashed changes
->>>>>>> Stashed changes
 }
