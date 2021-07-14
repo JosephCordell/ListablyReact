@@ -21,7 +21,7 @@ export default function TVCard({ tv }) {
                     <div className={'title-date card-title'}>{tv.name}</div>
 
                     <div className={'description'}> {tv.overview} </div>
-                    <Stream tvID={tv.id}/>
+                    <Stream tvID={tv.id} key={tv.id}/>
                     <div className={'myRating'}></div>
                     < ChangeStatus />
                 </div>

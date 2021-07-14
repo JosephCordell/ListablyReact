@@ -24,7 +24,7 @@ export default function MovieCard({ movie }) {
                     <div className={'date'}>({movie.release_date})</div>
                 </div>
                 <div className={'description'}> {movie.overview} </div>
-                <Stream movieID={movie.id}/>
+                <Stream movieID={movie.id} key={movie.id}/>
                 <div className={'myRating'}></div>
             < ChangeStatus />
             </div>

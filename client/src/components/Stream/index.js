@@ -15,15 +15,14 @@ export default function Stream({ movieID, tvID }) {
     
     const streamMovieAPI = `https://api.themoviedb.org/3/movie/${movieID}/watch/providers?api_key=${movieDbApiKey}`
     const movieResults = (movieID) => {
-        const streamMovieAPI = `https://api.themoviedb.org/3/movie/${movieID}/watch/providers?api_key=${movieDbApiKey}`
         axios.get(streamMovieAPI).then((request) => {
             setMovie(true)
             setStream({ ...request.data.results.US })
         });
     }
 
+    const streamTVAPI = `https://api.themoviedb.org/3/tv/${tvID}/watch/providers?api_key=${movieDbApiKey}`
     const tvResults = (tvID) => {
-        const streamTVAPI = `https://api.themoviedb.org/3/tv/${tvID}/watch/providers?api_key=${movieDbApiKey}`
         axios.get(streamTVAPI).then((request) => {
             setTV(true)
             setStream({ ...request.data.results.US })
@@ -31,18 +30,11 @@ export default function Stream({ movieID, tvID }) {
     }
 
     useEffect(() => {
-        // if(movie){
-        //     console.log("selected movie");
-        //     movieResults(movieID)
-        // } else if (tv) {
-        //     console.log("selected tv");
-        //     tvResults(tvID)
-        // } else {
-        //     return;
-        // }
 
         axios.get(streamMovieAPI).then((request) => {
-            setMovie(true)
+            setStream({ ...request.data.results.US })
+        });
+        axios.get(streamTVAPI).then((request) => {
             setStream({ ...request.data.results.US })
         });
     }, [])
@@ -55,7 +47,12 @@ export default function Stream({ movieID, tvID }) {
             if (key !== "link") {
                 const providerArr = [];
                 stream[key].forEach((element) => {
+                    console.log(element);
+                    if(element.logo_path !== ''){
                     providerArr.push(element.logo_path)
+                    }else{
+                        return
+                    }
                 })
                 setProvider(providerArr)
             }
@@ -68,7 +65,7 @@ export default function Stream({ movieID, tvID }) {
     return (
 
         <React.Fragment>
-            {provider.map(logo => <img src={`https://image.tmdb.org/t/p/original/${logo}`} alt="provider_logo" className={'provider-logo'} />)}
+            {provider.map(logo => <img src={`https://image.tmdb.org/t/p/original/${logo}`} alt="provider_logo" className={'provider-logo'} key={logo}/>)}
         </React.Fragment>
     )
 }
