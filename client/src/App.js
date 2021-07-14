@@ -9,6 +9,7 @@ import TrendingMovies from './views/TrendingMovies';
 import Login from './views/Login';
 import TrendingTv from './views/TrendingTv';
 import User from './views/User';
+import Footer from './components/Footer'; 
 import axios from 'axios';
 
 const App = () => {
@@ -46,6 +47,7 @@ const App = () => {
                 </Route>
                 <Route path="/" component={Homepage} />
             </Switch>
+            <Footer />
         </React.Fragment>
     );
 };
