@@ -6,20 +6,11 @@ import './style.css';
 
 const Header = ({user, setUser, loggedIn}) => {
 
-    const logout = async () => {
-        const response = await axios('/api/users/logout', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-        });
-        console.log('logged out');
-    
-        if (response.ok) {
-            localStorage.removeItem('token')
-            localStorage.removeItem('loggedIn')
-            document.location.replace('/');
-        } else {
-            return;
-        }
+    const logout = () => {
+        localStorage.removeItem('token')
+        localStorage.removeItem('loggedIn')
+        document.location.replace('/');
+        
     };
 
 
