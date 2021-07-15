@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 require('dotenv').config();
 
+
 const KEY = process.env.REACT_APP_MOVIE_DB_API_KEY;
 const URL = `https://api.themoviedb.org/3/trending/all/day?api_key=${ KEY }`;
 

@@ -1,0 +1,9 @@
+.logo-container{
+    display: flex;
+    flex-direction: column;
+}
+.provider-logo{
+    margin: 5px;
+    width: 50px;
+    border-radius: 10px;
+}

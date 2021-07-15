@@ -31,8 +31,8 @@ export default function TrendingMovies() {
                 <h2>Top 25 Trending Movies</h2>
             </div>
 
-                       {movies.map((movie) => (
-                <MovieCard movie={ movie } key={movie.id}/>
+            {movies.map((movie) => (
+                <MovieCard movie={movie} key={movie.id} />
             ))}
         </React.Fragment>
     );
