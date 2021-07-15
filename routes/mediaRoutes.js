@@ -15,7 +15,7 @@ router.post('/add', async (req, res) => {
         console.log('made it! 222');
         const token = req.headers.authorization;
 
-        console.log(`token: ${token}`);
+        console.log(`token: ${token.slice(7)}`);
 
         var decoded = jwt.verify(token.slice(7), process.env.JWTSECRET);
 

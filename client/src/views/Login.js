@@ -24,7 +24,7 @@ export default function SignIn() {
                     localStorage.setItem(`loggedIn`, true);
                     localStorage.setItem(`token`, data.token);
                     localStorage.setItem('todo', data.todo)
-                    localStorage.setItem('rating', data.ratings)
+                    localStorage.setItem('ratings', data.ratings)
                    document.location.replace('/user');
                 })
                 .catch((err) => {

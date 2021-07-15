@@ -50,7 +50,6 @@ router.post('/login', async (req, res) => {
 });
 
 router.post('/logout', (req, res) => {
-    //res.send('not working')
     console.log('logging out');
     if (req.session.logged_in) {
         req.session.logged_in = false;
