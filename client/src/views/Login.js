@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import useForm from '../js/useForm';
 import validate from '../js/loginValidate';
 
 export default function SignIn() {
@@ -26,7 +25,7 @@ export default function SignIn() {
                     localStorage.setItem(`token`, data.token);
                     localStorage.setItem('todo', data.todo)
                     localStorage.setItem('rating', data.ratings)
-                    document.location.replace('/user');
+                   document.location.replace('/user');
                 })
                 .catch((err) => {
                     console.log(err);

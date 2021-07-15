@@ -22,7 +22,7 @@ export default function MovieCard({ movie }) {
                 <div className={'description'}> {movie.overview} </div>
 
                 <div className={'myRating'}></div>
-            < ChangeStatus movie={ movie }/>
+            < ChangeStatus media={ movie }/>
             </div>
 
         </div>

@@ -1,38 +1,55 @@
 const router = require('express').Router();
-const { Media, User } = require('../models');
+const { Media, User } = require('../models')
+const jwt = require('jsonwebtoken');
 
-router.post('/', async (req, res) => {
+router.post('/add', async (req, res) => {
     try {
-        res.send('peanut butter jelly time')
+        console.log(req.headers);
         let userObj;
-        if (!req.session.user_id) {
+        if (!req.headers.authorization) {
+            console.log('made it! 111');
             res.status(401).end();
             return;
         }
-        let user = await User.findByPk(req.session.user_id);
+        
+        console.log('made it! 222');
+        const token = req.headers.authorization;
+
+        console.log(`token: ${token}`);
+
+        var decoded = jwt.verify(token.slice(7), process.env.JWTSECRET);
+
+        console.log(`decoded:`, decoded);
+
+        let user = await User.findOne({ where: { id: decoded.data } });
         if (!user.todo) {
-            userObj = [[req.body.id, req.body.todo]];
+            userObj = [{id: req.body.id, todo: req.body.todo}];
         } else {
             userObj = JSON.parse(user.todo);
 
             let found = false;
 
-            for (let i = 0; i < userObj.length; i++) {
-                if (userObj[i][0] === req.body.id) {
+            userObj.forEach((e, index) => {
+                if (e.id === req.body.id) {
                     found = true;
-                    if (userObj[i][1] === req.body.todo) {
-                        break;
+                    if (e.todo === req.body.todo) {
+                        return
                     } else {
-                        userObj[i][1] = req.body.todo;
+                        userObj[index].todo = req.body.todo;
                     }
                 }
-            }
+            });
+
             if (!found) {
-                userObj.push([req.body.id, req.body.todo]);
+                userObj.push({id: req.body.id, todo: req.body.todo});
             }
         }
 
+        console.log(`userObj: ${userObj}`)
+
         const stringUserObj = JSON.stringify(userObj);
+        
+        console.log(`userObj: ${stringUserObj}`)
 
         user.todo = stringUserObj;
 
@@ -42,8 +59,8 @@ router.post('/', async (req, res) => {
             ...req.body,
         });
 
-        res.status(200).json(newMedia);
-    } catch (err) {
+        res.status(200).json({ todo: stringUserObj});
+    } catch (err) { console.log(err)
         if (err.errors) {
             for (let i = 0; i < err.errors.length; i++) {
                 if (err.errors[i].validatorKey === 'not_unique') {

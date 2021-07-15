@@ -21,7 +21,7 @@ export default function TVCard({ tv }) {
                     <div className={'description'}> {tv.overview} </div>
 
                     <div className={'myRating'}></div>
-                    < ChangeStatus />
+                    < ChangeStatus media={ tv }/>
                 </div>
             </div>
         </>

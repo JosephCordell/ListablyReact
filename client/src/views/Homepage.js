@@ -18,7 +18,8 @@ useEffect(() => {
                 setTrendingMovie(trendyMovie);
                 setTrendingTv(trendyTv);
                 setLoading(false);
-            });
+            })
+            .catch((error) => console.log(error));;
         }
         fetchData();
     }, []);
@@ -54,7 +55,7 @@ useEffect(() => {
                             <img src= {`https://image.tmdb.org/t/p/w500${ trendingTv.poster_path }`} alt="TV" className={'image'} />
                             <div className={'overlay'}>
                                 <div className={'col-lg text'}>
-                                    <a href="/trending-tvshows" className={'fancy'}>
+                                    <a href="/trending-tv" className={'fancy'}>
                                         TV Shows
                                     </a>
                                 </div>

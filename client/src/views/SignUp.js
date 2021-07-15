@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, { useState } from 'react';
 import validate from '../js/signUpValidate';
 
@@ -26,6 +25,8 @@ export default function SignUp() {
 
                     localStorage.setItem(`loggedIn`, true);
                     localStorage.setItem(`token`, data.token);
+                    localStorage.setItem('todo', null)
+                    localStorage.setItem('ratings', null)
                     document.location.replace('/user');
                 })
                 .catch((err) => {

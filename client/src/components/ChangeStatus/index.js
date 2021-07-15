@@ -1,46 +1,92 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 
-export default function ChangeStatus({ movie }) {
-    const movieDetails = movie
-    const [value, setValue ] = useState()
-
+export default function ChangeStatus({ media }) {
+    const mediaDetails = media;
+    const [value, setValue] = useState('default');
+    
     useEffect(() => {
 
-        const missive = {
-            title: movieDetails.title,
-            release_date: movieDetails.date,
-            poster_path: movieDetails.poster,
-            mediatype: movieDetails.type,
-            id: movieDetails.id,
-            todo: value,
-            description: movieDetails.overview,
-        }; 
-/* 
-        fetch('/api/media', {
-            method: 'POST',
-            headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(missive),
-        })
-            .then((response) => {
-                if (response.status === 401) {
-                    document.location.replace('/login');
-                }
-            })
-            .catch((error) => console.log(error));
-     */
+        if (mediaDetails.media_type === 'movies') {
+            console.log(`movies?`);
+                     const missive = {
+                title: mediaDetails.title,
+                release_date: mediaDetails.release_date,
+                poster_path: mediaDetails.poster_path,
+                mediatype: mediaDetails.media_type,
+                id: mediaDetails.id,
+                todo: value,
+                
+                description: mediaDetails.overview,
+                authorization: localStorage.getItem('token') 
+            };
+            
+            const missiveJSON = JSON.stringify(missive) 
+            
+            if (value !== 'default') {
+                
+                if (missive.mediatype === 'movie')
+                console.log('you made it here!');
+                fetch('/api/media/add', {
+                    method: 'POST',
+                    headers: {
+                        Accept: 'application/json',
+                        'Content-Type': 'application/json',
+                        authorization: `Bearer ${localStorage.getItem('token')}`
+                    },
+                    body: missiveJSON,
+                })
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log('Did I make it? ');
+                    localStorage.setItem('todo', data.todo);
+                })
+                .catch((error) => console.log(error));
+            }
+        }
+            
+        if (mediaDetails.media_type === 'tv') {
+            const missive = {
+                title: mediaDetails.name,
+                release_date: mediaDetails.first_air_date,
+                poster_path: mediaDetails.poster_path,
+                mediatype: mediaDetails.media_type,
+                id: mediaDetails.id,
+                todo: value,
+                
+                description: mediaDetails.overview,
+                authorization: localStorage.getItem('token') 
+            };
+            console.log(missive, mediaDetails);
+            if (value !== 'default') {
 
-
-
-    }, [value])
-
-
+                const missiveJSON = JSON.stringify(missive) 
+                
+                if (missive.mediatype === 'movie')
+                console.log('you made it here!');
+                fetch('/api/media/add', {
+                    method: 'POST',
+                    headers: {
+                        Accept: 'application/json',
+                        'Content-Type': 'application/json',
+                        authorization: `Bearer ${localStorage.getItem('token')}`
+                    },
+                    body: missiveJSON,
+                })
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log('Did I make it? ');
+                    localStorage.setItem('todo', data.todo);
+                })
+                .catch((error) => console.log(error));
+            }
+        }
+    }, [value]);
+    
     return (
         <React.Fragment>
-            <select className={"changeStatus"} onChange={(e) => setValue(e.target.value)}>
-                <option defaultValue="default"  disabled hidden>
+            <select className={'changeStatus'} onChange={(e) => setValue(e.target.value)} defaultValue="default">
+                <option  value="default" disabled hidden>
                     Add to my list:
                 </option>
                 <option value="0">Watching</option>
