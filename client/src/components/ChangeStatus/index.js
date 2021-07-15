@@ -1,17 +1,22 @@
 import React from 'react';
 import './style.css';
+import Select from 'react-select';
 
+const options = [
+    {value:"0", label:"Watching"},
+    {value:"2", label:"Want to Watch"},
+    {value:"4", label:"Complete"}
+]
 export default function ChangeStatus() {
     return (
         <React.Fragment>
-            <select className={"changeStatus"}>
-                <option value="default" disabled hidden>
-                    Add to my list:
-                </option>
-                <option value="0">Watching</option>
-                <option value="2">Want to Watch</option>
-                <option value="4">Complete</option>
-            </select>
+            <div className='changeStatus'>
+            <Select 
+                value={options.value}
+                options={options}
+                placeholder={"Add to my list:"}
+            />
+            </div>
         </React.Fragment>
     );
 }
