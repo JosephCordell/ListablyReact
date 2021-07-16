@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
-//import Select from 'react-select';
 import './style.css';
 
 export default function ChangeStatus({ media }) {
@@ -82,24 +81,6 @@ export default function ChangeStatus({ media }) {
         }
     }, [value]);
 
-    /* 
-    const options = [
-        { value: '0', label: 'Watching' },
-        { value: '2', label: 'Want to Watch' },
-        { value: '4', label: 'Complete' },
-    ];
-
-    return (
-        <React.Fragment>
-            <div className='changeStatus' onChange={(e) => console.log(value)} >
-            <Select 
-                value={options.value}
-                options={options}
-                placeholder={"Add to my list:"}
-            />
-            </div>
-        </React.Fragment>
-    ); */
 
     return (
         <React.Fragment>

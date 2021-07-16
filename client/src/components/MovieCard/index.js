@@ -1,6 +1,7 @@
 import React from 'react';
 import ChangeStatus from '../ChangeStatus';
 import Stream from '../Stream';
+import ReadMore from '../ReadMore';
 import './style.css';
 
 export default function MovieCard({ movie }) {
@@ -23,7 +24,7 @@ export default function MovieCard({ movie }) {
                     <div className={'card-title'}>{movie.title}</div>
                     <div className={'date'}>({movie.release_date})</div>
                 </div>
-                <div className={'description'}> {movie.overview} </div>
+                <div className={'description'}> <ReadMore text={movie.overview}>{movie.overview}</ReadMore>  </div>
                 <Stream movieID={movie.id} key={movie.id}/>
                 <div className={'myRating'}></div>
             < ChangeStatus media={ movie }/>
