@@ -2,29 +2,61 @@
     background-color: lightgray;
     padding: 20px;
     border-radius: 10px;
+    width: 47%;
     margin: 20px;
 }
 
 .card-info {
-
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 
+.card-img-date-desc{
+    display: flex;
+    width: 100%;
+}
 .card-image {
-
+    width: auto;
+    height: 100%;
+    max-height: 27vh;
 }
 
 .title-date {
-
+    display: flex;
+    align-items: center;
 }
 
 .card-title {
-
+    margin-bottom: 0;
+    margin-left: 20px;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+.date {
+    margin-left: 10px;
 }
 
 .description {
+    margin-left: 20px;
+    width: 90%;
+}
 
+.stream{
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+.stream p{
+    margin-bottom: 0;
+    font-weight: bold;
+    font-size: 0.9rem;
+    font-style: italic;
 }
 
 .myRating {
-    margin-left: auto;
+    display: flex;
+    margin-top: 10px;
+    width: 100%;
+    justify-content: center;
 }
