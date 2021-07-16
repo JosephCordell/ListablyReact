@@ -1,6 +1,7 @@
 import React from 'react';
 import ChangeStatus from '../ChangeStatus';
 import Stream from '../Stream';
+import ReadMore from '../ReadMore';
 import './style.css';
 
 export default function TVCard({ tv }) {
@@ -20,7 +21,7 @@ export default function TVCard({ tv }) {
 
                     <div className={'title-date card-title'}>{tv.name}</div>
 
-                    <div className={'description'}> {tv.overview} </div>
+                    <div className={'description'}> <ReadMore text={tv.overview}>{tv.overview} </ReadMore> </div>
                     <Stream tvID={tv.id} key={tv.id}/>
                     <div className={'myRating'}></div>
                     < ChangeStatus />
