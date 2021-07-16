@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 import MovieCard from '../components/MovieCard';
 import TVCard from '../components/TVCard';
@@ -30,7 +31,7 @@ export default function SearchResults({ user, setUser }) {
                 setTV(getAllTV.data.results);
                 setUser({ ...user, searchLoad: false })
             })
-        )
+        ).catch((error) => console.log(error));
     }
 
     useEffect(() => {

@@ -17,7 +17,7 @@ useEffect(() => {
       await axios.get(URL).then((request) => {
           setTvShows(request.data.results);
           setLoading(false);
-      });
+      }).catch((error) => console.log(error));
   }
   fetchData();
 }, []);

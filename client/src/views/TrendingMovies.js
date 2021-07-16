@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import '../App.css'
 import React, { useState, useEffect } from 'react';
 import MovieCard from '../components/MovieCard';
@@ -17,8 +18,8 @@ export default function TrendingMovies() {
         async function fetchData() {
             await axios.get(trendingMoviesApi).then((request) => {
                 setMovies(request.data.results);
-                setLoading(false);
-            });
+                 setLoading(false);
+            }).catch((error) => console.log(error));
         }
         fetchData();
     }, []);

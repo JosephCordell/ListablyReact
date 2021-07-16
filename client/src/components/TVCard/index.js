@@ -28,7 +28,7 @@ export default function TVCard({ tv }) {
                         </div>
                     </div>
                     <div className={'myRating'}>
-                    < ChangeStatus />
+                    < ChangeStatus media={ tv } />
                     </div>
                 </div>
             </div>

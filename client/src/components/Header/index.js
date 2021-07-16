@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React from 'react';
 import SearchBar from '../SearchBar';
 import './style.css';
@@ -9,6 +8,9 @@ const Header = ({user, setUser, loggedIn}) => {
     const logout = () => {
         localStorage.removeItem('token')
         localStorage.removeItem('loggedIn')
+        localStorage.removeItem('todo')
+        localStorage.removeItem('ratings')
+
         document.location.replace('/');
         
     };
@@ -56,7 +58,7 @@ const Header = ({user, setUser, loggedIn}) => {
                             </li>
 
                             <li onClick={logout} className={'nav-item'}>
-                                <a className={'nav-link'} /* href="/" */ classID={'logout'} >
+                                <a className={'nav-link'}  href="/" classID={'logout'} >
                                     Logout
                                 </a>
                             </li>

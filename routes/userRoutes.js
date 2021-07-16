@@ -7,18 +7,16 @@ router.post('/login', async (req, res) => {
         const token = req.headers.authorization;
         console.log(token.slice(7));
         var decoded = jwt.verify(token.slice(7), process.env.JWTSECRET);
-        console.log(decoded, Date.now()/1000);
 
-        if (decoded.exp >  Date.now()/1000) {
+        if (decoded.exp > Date.now() / 1000) {
             const userData = await User.findOne({ where: { id: decoded.data } });
-            console.log(userData);
-            if (Object.keys(userData).length > 1 ) {
+            if (Object.keys(userData).length > 1) {
                 res.status(200).json({ todo: userData.todo, ratings: userData.ratings, logged_in: true });
-                return 
+                return;
             }
-        } 
-            res.status(401)
-        return
+        }
+        res.status(401);
+        return;
     }
 
     try {
@@ -42,7 +40,7 @@ router.post('/login', async (req, res) => {
             req.session.user_id = userData.id;
             req.session.logged_in = true;
 
-            req.session.token = jwt.sign({ data: userData.id }, process.env.JWTSECRET, { expiresIn: 60 * 60 });
+            req.session.token = jwt.sign({ data: userData.id }, process.env.JWTSECRET, { expiresIn: '365d' });
 
             res.status(200).json({ todo: userData.todo, ratings: userData.ratings, logged_in: true, token: req.session.token });
         });
@@ -52,7 +50,6 @@ router.post('/login', async (req, res) => {
 });
 
 router.post('/logout', (req, res) => {
-    //res.send('not working')
     console.log('logging out');
     if (req.session.logged_in) {
         req.session.logged_in = false;
@@ -64,7 +61,6 @@ router.post('/logout', (req, res) => {
     }
 });
 
-
 // Creates User
 router.post('/signup', async (req, res) => {
     console.log('signing up');
@@ -73,7 +69,7 @@ router.post('/signup', async (req, res) => {
         req.session.save(() => {
             req.session.user_id = userData.id;
             req.session.logged_in = true;
-            req.session.token = jwt.sign({ data: userData.id }, process.env.JWTSECRET, { expiresIn: 60 * 60 });
+            req.session.token = jwt.sign({ data: userData.id }, process.env.JWTSECRET, { expiresIn: '365d' });
             //console.log(req.session.token);
             res.status(200).json({ token: req.session.token });
         });
