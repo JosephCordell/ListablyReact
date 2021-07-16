@@ -20,8 +20,6 @@ export default function SignUp() {
             })
                 .then((response) => response.json())
                 .then((data) => {
-                    console.log(data);
-
                     localStorage.setItem(`loggedIn`, true);
                     localStorage.setItem(`token`, data.token);
                     localStorage.setItem('todo', null);

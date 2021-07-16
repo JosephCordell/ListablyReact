@@ -5,17 +5,13 @@ const e = require('express');
 
 router.post('/add', async (req, res) => {
     try {
-        console.log(req.headers);
         let userObj;
         if (!req.headers.authorization) {
-            console.log('made it! 111');
             res.status(401).end();
             return;
         }
 
         const token = req.headers.authorization;
-
-        console.log(`token: ${token.slice(7)}`);
 
         var decoded = jwt.verify(token.slice(7), process.env.JWTSECRET);
 
@@ -79,16 +75,11 @@ router.post('/todo', async (req, res) => {
                 title: almost.title,
                 id: almost.id,
             });
+        }
 
-            console.log(`mediaArr inside loop:`, mediaArr);
-        };
-        console.log(`mediaArr inside loop:`, mediaArr);
-        const mediaUserObj = JSON.stringify(mediaArr);
-        console.log(`mediaUserObj`);
-        console.log(mediaUserObj);
+        const mediaUserObj = mediaArr;
         res.status(200).json({ media: mediaUserObj });
     } catch (err) {
-        console.log(err);
         res.status(400).json(err);
     }
 });
