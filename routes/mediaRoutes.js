@@ -1,6 +1,7 @@
 const router = require('express').Router();
-const { Media, User } = require('../models')
+const { Media, User } = require('../models');
 const jwt = require('jsonwebtoken');
+const e = require('express');
 
 router.post('/add', async (req, res) => {
     try {
@@ -11,7 +12,7 @@ router.post('/add', async (req, res) => {
             res.status(401).end();
             return;
         }
-        
+
         console.log('made it! 222');
         const token = req.headers.authorization;
 
@@ -23,7 +24,7 @@ router.post('/add', async (req, res) => {
 
         let user = await User.findOne({ where: { id: decoded.data } });
         if (!user.todo) {
-            userObj = [{id: req.body.id, todo: req.body.todo}];
+            userObj = [{ id: req.body.id, todo: req.body.todo }];
         } else {
             userObj = JSON.parse(user.todo);
 
@@ -33,34 +34,27 @@ router.post('/add', async (req, res) => {
                 if (e.id === req.body.id) {
                     found = true;
                     if (e.todo === req.body.todo) {
-                        return
+                        return;
                     } else {
                         userObj[index].todo = req.body.todo;
                     }
                 }
             });
-
             if (!found) {
-                userObj.push({id: req.body.id, todo: req.body.todo});
+                userObj.push({ id: req.body.id, todo: req.body.todo });
             }
         }
-
-        console.log(`userObj: ${userObj}`)
-
         const stringUserObj = JSON.stringify(userObj);
-        
-        console.log(`userObj: ${stringUserObj}`)
-
         user.todo = stringUserObj;
 
         user = await user.save();
-
         const newMedia = await Media.create({
             ...req.body,
         });
 
-        res.status(200).json({ todo: stringUserObj});
-    } catch (err) { console.log(err)
+        res.status(200).json({ todo: stringUserObj });
+    } catch (err) {
+        console.log(err);
         if (err.errors) {
             for (let i = 0; i < err.errors.length; i++) {
                 if (err.errors[i].validatorKey === 'not_unique') {
@@ -69,6 +63,36 @@ router.post('/add', async (req, res) => {
                 }
             }
         }
+        res.status(400).json(err);
+    }
+});
+
+router.post('/todo', async (req, res) => {
+    let mediaArr = [];
+    try {
+        console.log(req.body);
+        let userObj;
+        userObj = req.body;
+        userObj.forEach(async (e) => {
+            console.log(e.id, e.todo);
+            todoArr = e.id;
+            todoNum = e.todo;
+            let almost =  await Media.findOne({ where: { id: todoArr } });
+            console.log(almost);
+            mediaArr.push({
+                mediatype: almost.mediatype,
+                poster_path: almost.poster_path,
+                title: almost.title,
+                id: almost.id,
+            });
+            console.log(mediaArr);
+
+
+        });
+
+        res.status(200).json({ media: mediaArr });
+    } catch (err) {
+        console.log(err);
         res.status(400).json(err);
     }
 });

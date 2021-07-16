@@ -13,7 +13,6 @@ export default function SignUp() {
         e.preventDefault();
 
         const fetchData = async () => {
-            console.log(username, email, password);
             await fetch('/api/users/signup', {
                 method: 'POST',
                 body: JSON.stringify({ username, email, password }),
@@ -25,15 +24,14 @@ export default function SignUp() {
 
                     localStorage.setItem(`loggedIn`, true);
                     localStorage.setItem(`token`, data.token);
-                    localStorage.setItem('todo', null)
-                    localStorage.setItem('ratings', null)
+                    localStorage.setItem('todo', null);
+                    localStorage.setItem('ratings', null);
                     document.location.replace('/user');
                 })
                 .catch((err) => {
                     console.log(err);
                     setHideModal(false);
                 });
-
         };
         const response = validate({ username, email, password, password2 });
         setErrors(response);

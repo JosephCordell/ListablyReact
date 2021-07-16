@@ -9,9 +9,9 @@ import SearchResults from './views/SearchResults';
 import TrendingMovies from './views/TrendingMovies';
 import Login from './views/Login';
 import TrendingTv from './views/TrendingTv';
-import User from './views/User';
 import Footer from './components/Footer'; 
 import axios from 'axios';
+import User from './views/User';
 
 const App = () => {
     const [user, setUser] = useState({
