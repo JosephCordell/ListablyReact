@@ -82,9 +82,11 @@ router.post('/todo', async (req, res) => {
 
             console.log(`mediaArr inside loop:`, mediaArr);
         };
-        console.log(`mediaArr inside loop:`, mediaArr);
-        const mediaUserObj = JSON.stringify(mediaArr);
-        console.log(`mediaUserObj`);
+
+
+        console.log(`type of:`, typeof( mediaArr))
+        const mediaUserObj = mediaArr;
+        console.log(`mediaUserObj after loop`);
         console.log(mediaUserObj);
         res.status(200).json({ media: mediaUserObj });
     } catch (err) {

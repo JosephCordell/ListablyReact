@@ -1,9 +1,11 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from 'react';
 import UserList from '../components/UserList';
+import TabFilter from '../components/TabFilter';
 
 export default function User() {
     const [medias, setMedias] = useState([]);
+    const [tab, setTab] = useState(['all']);
 
     useEffect(() => {
         if (localStorage.getItem('todo') === null) {
@@ -12,30 +14,29 @@ export default function User() {
         } else {
             console.log(localStorage.getItem('todo'));
 
-            const midas =localStorage.getItem('todo')
+            const midas = localStorage.getItem('todo');
             console.log(`midus:`, midas);
-           const fetchData = async () => {
+            const fetchData = async () => {
                 console.log('made it to the fetch');
                 await fetch('/api/media/todo', {
                     method: 'POST',
                     body: midas,
                     headers: { 'Content-type': 'application/json' },
                 })
-                .then((response) => response.json())
-                .then((data) => {
-                    setMedias(data.media)
-                    console.log(`here is the data`);
-                    console.log(data.media);
-                })
-
-            }; 
+                    .then((response) => response.json())
+                    .then((data) => {
+                        setMedias(data.media);
+                        console.log(`here is the data`);
+                        console.log(data.media);
+                    });
+            };
             fetchData();
         }
     }, []);
 
     return (
         <React.Fragment>
-            <aside>
+            {/*            <aside>
                 <div className="h-100 d-flex flex-column p-3 bg-light" style={{ width: '280px' }}>
                     <a href="/" className="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
                         <span className="fs-4">My Lists</span>
@@ -60,11 +61,12 @@ export default function User() {
                         </ul>
                     </div>
                 </div>
-            </aside>
+            </aside> */}
+
+            <TabFilter tab={tab} setTab={setTab} />
 
             <section>
-                <div className="col row-cols-12">
-
+                <div className="">
                     <UserList medias={medias} />
                 </div>
             </section>
