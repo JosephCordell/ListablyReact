@@ -79,29 +79,6 @@ section {
   margin-top: 10px;
 }
 
-.card-info {
-  display: flex;
-  align-items: center;
-}
-
-.card-image {
-  width: 100%;
-  height: auto;
-  max-width: 10vw;
-}
-
-.title-date {
-  margin-left: 5px;
-  padding-right: 10px;
-  width: 15%;
-}
-
-.card-title {
-  margin-bottom: 0;
-  margin-left: 10px;
-  font-size: 1.3rem;
-  font-weight: bold;
-}
 .date {
   margin-left: 10px;
 }
@@ -121,11 +98,11 @@ section {
   margin: 20px;
 }
 
-.results-container {
-  background-color: lightgray;
-  padding: 20px;
-  border-radius: 10px;
-  margin: 20px;
+.result-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
 }
 
 .error {

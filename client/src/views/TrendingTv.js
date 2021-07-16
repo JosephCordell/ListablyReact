@@ -1,7 +1,9 @@
+import '../App.css'
 import React, { useState, useEffect } from 'react';
 import TVCard from '../components/TVCard';
 import axios from 'axios';
 require('dotenv').config();
+
 
 const key = process.env.REACT_APP_MOVIE_DB_API_KEY;
 const URL = `https://api.themoviedb.org/3/trending/tv/day?api_key=${key}`
@@ -26,10 +28,11 @@ return (
     <div className={'results'}>
       <h2>Top 25 Trending TV Shows</h2>
     </div>
-      
+    <div className='result-container'>
     {tvShows.map((tv) => (
       <TVCard tv={ tv } key={ tv.id }/>
     ))}
+    </div>
 </React.Fragment>
 );
 };

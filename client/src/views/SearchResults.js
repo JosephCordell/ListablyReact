@@ -47,38 +47,47 @@ export default function SearchResults({ user, setUser }) {
                 <h2>Searching {tab} Results: {search}</h2>
             </div>
             <TabFilter tab={tab} setTab={setTab} />
-
+            <div className='result-container'>
             {tab === 'Movies' ?
                 <>
                     {
                         movies.length > 0 ? movies.map((movie) =>
-                            (<MovieCard movie={movie} key={movie.id} />)
+                        (
+                            <MovieCard movie={movie} key={movie.id} />
+                        )
                         ) : <p>No movies found</p>
                     }
                 </> :
                 tab === 'TV shows' ?
                     <>{
                         tv.length > 0 ? tv.map((tv) => (
-                            <TVCard tv={tv} key={tv.id} />
+                            
+                                <TVCard tv={tv} key={tv.id} />
+                            
                         )) : <p>No TV shows found</p>
                     }
                     </> :
                     <>
-                        <div className={'results'}> <h4>Movies</h4> </div>
+                        
                         {
                             movies.length > 0 ? movies.map((movie) =>
-                                (<MovieCard movie={movie} key={movie.id} />)
+                            (
+                                <MovieCard movie={movie} key={movie.id} />
+                            )
                             ) : <p>No movies found</p>
                         }
 
-                        <div className={'results'}> <h4>TV Shows</h4> </div>
+                        
                         {
                             tv.length > 0 ? tv.map((tv) => (
-                                <TVCard tv={tv} key={tv.id} />
+                                
+                                    <TVCard tv={tv} key={tv.id} />
+                                
                             )) : <p>No TV shows found</p>
                         }
                     </>
             }
+            </div>
 
         </React.Fragment>
     )
