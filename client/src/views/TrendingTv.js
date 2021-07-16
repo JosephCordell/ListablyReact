@@ -26,10 +26,11 @@ return (
     <div className={'results'}>
       <h2>Top 25 Trending TV Shows</h2>
     </div>
-      
+    <div className='result-container'>
     {tvShows.map((tv) => (
       <TVCard tv={ tv } key={ tv.id }/>
     ))}
+    </div>
 </React.Fragment>
 );
 };

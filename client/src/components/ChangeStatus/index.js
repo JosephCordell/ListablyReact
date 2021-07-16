@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import './style.css';
 
 export default function ChangeStatus({ media }) {
-    const mediaDetails = media;
+/*     const mediaDetails = media;
     const [value, setValue] = useState('default');
 
     useEffect(() => {
@@ -16,7 +16,7 @@ export default function ChangeStatus({ media }) {
                 poster_path: mediaDetails.poster_path,
                 mediatype: mediaDetails.media_type,
                 id: mediaDetails.id,
-                todo: value,
+                //todo: value,
 
                 description: mediaDetails.overview,
                 authorization: localStorage.getItem('token'),
@@ -52,7 +52,7 @@ export default function ChangeStatus({ media }) {
                 poster_path: mediaDetails.poster_path,
                 mediatype: mediaDetails.media_type,
                 id: mediaDetails.id,
-                todo: value,
+                //todo: value,
 
                 description: mediaDetails.overview,
                 authorization: localStorage.getItem('token'),
@@ -79,11 +79,11 @@ export default function ChangeStatus({ media }) {
                     .catch((error) => console.log(error));
             }
         }
-    }, [value]);
+    }, [value]); */
 
     return (
         <React.Fragment>
-            <select className={'changeStatus'} onChange={(e) => setValue(e.target.value)} defaultValue="default">
+            <select className={'changeStatus'} /* onChange={(e) => setValue(e.target.value)} */ defaultValue="default">
                 <option value="default" disabled hidden>
                     Add to my list:
                 </option>

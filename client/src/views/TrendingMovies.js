@@ -1,3 +1,4 @@
+import '../App.css'
 import React, { useState, useEffect } from 'react';
 import MovieCard from '../components/MovieCard';
 import axios from 'axios';
@@ -30,9 +31,11 @@ export default function TrendingMovies() {
                 <h2>Top 25 Trending Movies</h2>
             </div>
 
+            <div className='result-container'>
             {movies.map((movie) => (
                 <MovieCard movie={movie} key={movie.id} />
             ))}
+            </div>
         </React.Fragment>
     );
 }
