@@ -14,7 +14,7 @@
     justify-content: center;
 }
 
-.card-img-date-desc{
+.card-img-date-desc {
     display: flex;
     width: 100%;
 }
@@ -44,12 +44,12 @@
     width: 90%;
 }
 
-.stream{
+.stream {
     margin-left: 20px;
     margin-top: 10px;
 }
 
-.stream p{
+.stream p {
     margin-bottom: 0;
     font-weight: bold;
     font-size: 0.9rem;

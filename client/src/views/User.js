@@ -9,15 +9,10 @@ export default function User() {
 
     useEffect(() => {
         if (localStorage.getItem('todo') === null) {
-            console.log('no local storage');
             setMedias(false);
         } else {
-            console.log(localStorage.getItem('todo'));
-
             const midas = localStorage.getItem('todo');
-            console.log(`midus:`, midas);
             const fetchData = async () => {
-                console.log('made it to the fetch');
                 await fetch('/api/media/todo', {
                     method: 'POST',
                     body: midas,
@@ -26,8 +21,6 @@ export default function User() {
                     .then((response) => response.json())
                     .then((data) => {
                         setMedias(data.media);
-                        console.log(`here is the data`);
-                        console.log(data.media);
                     });
             };
             fetchData();

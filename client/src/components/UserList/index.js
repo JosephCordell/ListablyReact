@@ -2,16 +2,10 @@ import React from 'react';
 import './style.css';
 
 export default function UserList({ medias }) {
-    console.log(medias);
-    console.log(medias.length);
-
-
     return (
         <React.Fragment>
             {medias.length > 0 ? (
-
-                
-                <div className='result-container'>
+                <div className="result-container">
                     {medias.map((media) => (
                         <div className={`card-container ${media.mediatype}`}>
                             <div
@@ -22,18 +16,18 @@ export default function UserList({ medias }) {
                                 data-type={media.mediatype}
                                 data-description="{{media.overview}}"
                                 data-todo="{{media.todo}}"
-                                >
+                            >
                                 <img src={`https://image.tmdb.org/t/p/w500${media.poster_path}`} alt={media.mediatype} className="card-image" />
                                 <div className="card-title">{media.title}</div>
 
-                                    <div className='dropDownUser'>
-                                <select className="changeStatusUser" value={media.todo}>
-                                    <option value="0">Watching</option>
-                                    <option value="2">Want to Watch</option>
-                                    <option value="4">Completed</option>
-                                    <option value="6">Dropped</option>
-                                </select>
-                            </div>
+                                <div className="dropDownUser">
+                                    <select className="changeStatusUser" value={media.todo}>
+                                        <option value="0">Watching</option>
+                                        <option value="2">Want to Watch</option>
+                                        <option value="4">Completed</option>
+                                        <option value="6">Dropped</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     ))}

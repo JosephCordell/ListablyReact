@@ -11,7 +11,6 @@ export default function SignIn() {
         event.preventDefault();
 
         const fetchData = async () => {
-            console.log(email, password);
             await fetch('/api/users/login', {
                 method: 'POST',
                 body: JSON.stringify({ email, password }),
@@ -19,13 +18,11 @@ export default function SignIn() {
             })
                 .then((response) => response.json())
                 .then((data) => {
-                    console.log(data);
-
                     localStorage.setItem(`loggedIn`, true);
                     localStorage.setItem(`token`, data.token);
-                    localStorage.setItem('todo', data.todo)
-                    localStorage.setItem('ratings', data.ratings)
-                   document.location.replace('/user');
+                    localStorage.setItem('todo', data.todo);
+                    localStorage.setItem('ratings', data.ratings);
+                    document.location.replace('/user');
                 })
                 .catch((err) => {
                     console.log(err);

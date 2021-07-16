@@ -7,7 +7,6 @@ export default function ChangeStatus({ media }) {
     const [value, setValue] = useState('default');
 
     useEffect(() => {
-        console.log(mediaDetails);
         if (mediaDetails.media_type === 'movie') {
             const missive = {
                 title: mediaDetails.title,
@@ -25,20 +24,20 @@ export default function ChangeStatus({ media }) {
 
             if (value !== 'default') {
                 if (missive.mediatype === 'movie')
-                fetch('/api/media/add', {
-                    method: 'POST',
-                    headers: {
-                        Accept: 'application/json',
-                        'Content-Type': 'application/json',
-                        authorization: `Bearer ${localStorage.getItem('token')}`,
-                    },
-                    body: missiveJSON,
-                })
-                    .then((response) => response.json())
-                    .then((data) => {
-                        localStorage.setItem('todo', data.todo);
+                    fetch('/api/media/add', {
+                        method: 'POST',
+                        headers: {
+                            Accept: 'application/json',
+                            'Content-Type': 'application/json',
+                            authorization: `Bearer ${localStorage.getItem('token')}`,
+                        },
+                        body: missiveJSON,
                     })
-                    .catch((error) => console.log(error));
+                        .then((response) => response.json())
+                        .then((data) => {
+                            localStorage.setItem('todo', data.todo);
+                        })
+                        .catch((error) => console.log(error));
             }
         }
 
@@ -58,24 +57,23 @@ export default function ChangeStatus({ media }) {
                 const missiveJSON = JSON.stringify(missive);
 
                 if (missive.mediatype === 'movie')
-                fetch('/api/media/add', {
-                    method: 'POST',
-                    headers: {
-                        Accept: 'application/json',
-                        'Content-Type': 'application/json',
-                        authorization: `Bearer ${localStorage.getItem('token')}`,
-                    },
-                    body: missiveJSON,
-                })
-                    .then((response) => response.json())
-                    .then((data) => {
-                        localStorage.setItem('todo', data.todo);
+                    fetch('/api/media/add', {
+                        method: 'POST',
+                        headers: {
+                            Accept: 'application/json',
+                            'Content-Type': 'application/json',
+                            authorization: `Bearer ${localStorage.getItem('token')}`,
+                        },
+                        body: missiveJSON,
                     })
-                    .catch((error) => console.log(error));
+                        .then((response) => response.json())
+                        .then((data) => {
+                            localStorage.setItem('todo', data.todo);
+                        })
+                        .catch((error) => console.log(error));
             }
         }
     }, [value]);
-
 
     return (
         <React.Fragment>
