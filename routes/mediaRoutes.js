@@ -13,14 +13,11 @@ router.post('/add', async (req, res) => {
             return;
         }
 
-        console.log('made it! 222');
         const token = req.headers.authorization;
 
         console.log(`token: ${token.slice(7)}`);
 
         var decoded = jwt.verify(token.slice(7), process.env.JWTSECRET);
-
-        console.log(`decoded:`, decoded);
 
         let user = await User.findOne({ where: { id: decoded.data } });
         if (!user.todo) {
@@ -70,27 +67,26 @@ router.post('/add', async (req, res) => {
 router.post('/todo', async (req, res) => {
     let mediaArr = [];
     try {
-        console.log(req.body);
         let userObj;
         userObj = req.body;
-        userObj.forEach(async (e) => {
-            console.log(e.id, e.todo);
+        for (const e of userObj) {
             todoArr = e.id;
             todoNum = e.todo;
-            let almost =  await Media.findOne({ where: { id: todoArr } });
-            console.log(almost);
+            let almost = await Media.findOne({ where: { id: todoArr } });
             mediaArr.push({
                 mediatype: almost.mediatype,
                 poster_path: almost.poster_path,
                 title: almost.title,
                 id: almost.id,
             });
-            console.log(mediaArr);
 
-
-        });
-
-        res.status(200).json({ media: mediaArr });
+            console.log(`mediaArr inside loop:`, mediaArr);
+        };
+        console.log(`mediaArr inside loop:`, mediaArr);
+        const mediaUserObj = JSON.stringify(mediaArr);
+        console.log(`mediaUserObj`);
+        console.log(mediaUserObj);
+        res.status(200).json({ media: mediaUserObj });
     } catch (err) {
         console.log(err);
         res.status(400).json(err);

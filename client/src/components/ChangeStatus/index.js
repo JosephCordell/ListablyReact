@@ -9,7 +9,6 @@ export default function ChangeStatus({ media }) {
     useEffect(() => {
         console.log(mediaDetails);
         if (mediaDetails.media_type === 'movie') {
-            console.log(`movies?`);
             const missive = {
                 title: mediaDetails.title,
                 release_date: mediaDetails.release_date,
@@ -25,7 +24,7 @@ export default function ChangeStatus({ media }) {
             const missiveJSON = JSON.stringify(missive);
 
             if (value !== 'default') {
-                if (missive.mediatype === 'movie') console.log('you made it here!');
+                if (missive.mediatype === 'movie')
                 fetch('/api/media/add', {
                     method: 'POST',
                     headers: {
@@ -37,8 +36,6 @@ export default function ChangeStatus({ media }) {
                 })
                     .then((response) => response.json())
                     .then((data) => {
-
-                        console.log(data);
                         localStorage.setItem('todo', data.todo);
                     })
                     .catch((error) => console.log(error));
@@ -57,11 +54,10 @@ export default function ChangeStatus({ media }) {
                 description: mediaDetails.overview,
                 authorization: localStorage.getItem('token'),
             };
-            console.log(missive, mediaDetails);
             if (value !== 'default') {
                 const missiveJSON = JSON.stringify(missive);
 
-                if (missive.mediatype === 'movie') console.log('you made it here!');
+                if (missive.mediatype === 'movie')
                 fetch('/api/media/add', {
                     method: 'POST',
                     headers: {
@@ -73,7 +69,6 @@ export default function ChangeStatus({ media }) {
                 })
                     .then((response) => response.json())
                     .then((data) => {
-                        console.log('TV: WOrking? Did I make it? ');
                         localStorage.setItem('todo', data.todo);
                     })
                     .catch((error) => console.log(error));

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import UserList from '../components/UserList';
 
 export default function User() {
-    const [medias, setMedias] = useState();
+    const [medias, setMedias] = useState([]);
 
     useEffect(() => {
         if (localStorage.getItem('todo') === null) {
@@ -20,7 +20,14 @@ export default function User() {
                     method: 'POST',
                     body: midas,
                     headers: { 'Content-type': 'application/json' },
-                }).then((response) => console.log(response));
+                })
+                .then((response) => response.json())
+                .then((data) => {
+                    setMedias(data.media)
+                    console.log(`here is the data`);
+                    console.log(data.media);
+                })
+
             }; 
             fetchData();
         }
@@ -57,6 +64,7 @@ export default function User() {
 
             <section>
                 <div className="col row-cols-12">
+
                     <UserList medias={medias} />
                 </div>
             </section>

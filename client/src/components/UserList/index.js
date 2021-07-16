@@ -2,12 +2,12 @@ import React from 'react';
 import './style.css';
 
 export default function UserList({ medias }) {
-
+    console.log(medias);
     return (
         <React.Fragment>
-            {medias ? (
+{/*             { {medias ? ( */}
                 <div>
-                    {medias.map((media) => (
+                    {medias.forEach((media) => {
                         <div className={`card-container ${media.mediatype}`}>
                             <div
                                 className="card-info "
@@ -18,7 +18,7 @@ export default function UserList({ medias }) {
                                 data-description="{{media.overview}}"
                                 data-todo="{{media.todo}}"
                             >
-                                <img src={media.poster_path} alt={media.mediatype} className="card-image" />
+                                <img src={`https://image.tmdb.org/t/p/w500${media.poster_path}`} alt={media.mediatype} className="card-image" />
                                 <div className="card-title">{media.title}</div>
 
                                 <select className="changeStatusUser" value={media.todo}>
@@ -29,11 +29,12 @@ export default function UserList({ medias }) {
                                 </select>
                             </div>
                         </div>
-                    ))}
+                    })
+                    }
                 </div>
-            ) : (
+{/* /*             ) : (
                 <div className="empty-list"> Nothing added yet. Add to your list by searching or looking at trending</div>
-            )}
+            )} } */ }
         </React.Fragment>
     );
 }
