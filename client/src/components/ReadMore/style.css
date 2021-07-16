@@ -1,0 +1,12 @@
+.hide{
+    display: none;
+}
+
+.show{
+    color: rgb(100, 110, 255);
+    cursor: pointer;
+}
+
+.show:hover{
+    text-decoration: underline;
+}
