@@ -50,7 +50,10 @@ export default function Stream({ movieID, tvID }) {
 
         <React.Fragment>
             <div className='logo-container'>
-            {provider.map(logo => <img src={`https://image.tmdb.org/t/p/original/${logo}`} alt="provider_logo" className={'provider-logo'} key={logo}/>)}
+        
+            {provider.length > 0 ? provider.map(logo => <img src={`https://image.tmdb.org/t/p/original/${logo}`} alt="provider_logo" className={'provider-logo'} key={logo}/>) 
+            :
+                <p>Not Available Online</p>}
             </div>
         </React.Fragment>
     )

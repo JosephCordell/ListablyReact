@@ -26,7 +26,7 @@ export default function MovieCard({ movie }) {
                             </div>
                             <div className={'description'}> <ReadMore text={movie.overview}>{movie.overview}</ReadMore>  </div>
                             <div className='stream'>
-                                <p>Available at:</p>
+                                <p className='availability'>Available online at:</p>
                                 <Stream movieID={movie.id} key={movie.id} />
                             </div>
                         </div>
