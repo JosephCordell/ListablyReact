@@ -55,6 +55,7 @@ export default function TVCard({ tv }) {
 
                     < ChangeStatus media={ tv } />
 
+                    </div>
                     <div className={'similar-container'}>
                         { similar.length > 0 
                             ? similar.map((similarThing) => (
@@ -62,7 +63,7 @@ export default function TVCard({ tv }) {
                             : '' }
                     </div>
                     
-                    </div>
+                    
                 </div>
             </div>
         </>

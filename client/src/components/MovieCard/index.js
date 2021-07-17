@@ -57,6 +57,8 @@ export default function MovieCard({ movie }) {
                     }
 
                         < ChangeStatus media={ movie }/>
+                        
+                        </div>
 
                         <div className={'similar-container'}>
                         { similar.length > 0 
@@ -65,7 +67,7 @@ export default function MovieCard({ movie }) {
                             : '' }
                     </div>
 
-                    </div>
+                  
                 </div>
             </div>
         </React.Fragment >
