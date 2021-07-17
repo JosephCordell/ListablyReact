@@ -23,25 +23,25 @@ export default function ChangeStatus({ media }) {
             const missiveJSON = JSON.stringify(missive);
 
             if (value !== 'default') {
-                if (missive.mediatype === 'movie')
-                    fetch('/api/media/add', {
-                        method: 'POST',
-                        headers: {
-                            Accept: 'application/json',
-                            'Content-Type': 'application/json',
-                            authorization: `Bearer ${localStorage.getItem('token')}`,
-                        },
-                        body: missiveJSON,
+                fetch('/api/media/add', {
+                    method: 'POST',
+                    headers: {
+                        Accept: 'application/json',
+                        'Content-Type': 'application/json',
+                        authorization: `Bearer ${localStorage.getItem('token')}`,
+                    },
+                    body: missiveJSON,
+                })
+                    .then((response) => response.json())
+                    .then((data) => {
+                        localStorage.setItem('todo', data.todo);
                     })
-                        .then((response) => response.json())
-                        .then((data) => {
-                            localStorage.setItem('todo', data.todo);
-                        })
-                        .catch((error) => console.log(error));
+                    .catch((error) => console.log(error));
             }
         }
 
         if (mediaDetails.media_type === 'tv') {
+            console.log(`TV!!!`);
             const missive = {
                 title: mediaDetails.name,
                 release_date: mediaDetails.first_air_date,
@@ -55,22 +55,20 @@ export default function ChangeStatus({ media }) {
             };
             if (value !== 'default') {
                 const missiveJSON = JSON.stringify(missive);
-
-                if (missive.mediatype === 'movie')
-                    fetch('/api/media/add', {
-                        method: 'POST',
-                        headers: {
-                            Accept: 'application/json',
-                            'Content-Type': 'application/json',
-                            authorization: `Bearer ${localStorage.getItem('token')}`,
-                        },
-                        body: missiveJSON,
+                fetch('/api/media/add', {
+                    method: 'POST',
+                    headers: {
+                        Accept: 'application/json',
+                        'Content-Type': 'application/json',
+                        authorization: `Bearer ${localStorage.getItem('token')}`,
+                    },
+                    body: missiveJSON,
+                })
+                    .then((response) => response.json())
+                    .then((data) => {
+                        localStorage.setItem('todo', data.todo);
                     })
-                        .then((response) => response.json())
-                        .then((data) => {
-                            localStorage.setItem('todo', data.todo);
-                        })
-                        .catch((error) => console.log(error));
+                    .catch((error) => console.log(error));
             }
         }
     }, [value]);
