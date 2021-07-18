@@ -84,7 +84,7 @@ router.post('/todo', async (req, res) => {
     }
 });
 
-router.delete('/', async (req, res) => {
+router.delete('/delete', async (req, res) => {
     let user = await User.findByPk(req.session.user_id);
 
     let userObj;

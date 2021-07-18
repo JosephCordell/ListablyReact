@@ -1,7 +1,36 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { reduce } from '../../js/todoFunctions'
+
 import './style.css';
 
 export default function UserList({ medias }) {
+    const [media, setMedia] = useState(medias);
+    const [todo, setTodo ] = useState([])
+
+    //delete id array from object before sending it to the database and just store it from there, no need to delete on the server side
+
+    const removeTodo = (value, id) => {
+        if (value === '6') {
+            console.log(`Time to remove Todo`, id);
+            let todo = []
+            todo = localStorage.getItem('todo');
+            console.log(todo);
+            // setTodo(todo.filter((media) => media.id !== id))
+            // console.log(todo);
+            let newTodo = reduce(todo, id)
+            console.log(newTodo);
+
+            /*         fetch('/api/media/delete', {
+            method: 'DELETE',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(id),
+        }) */
+        }
+    };
+
     return (
         <React.Fragment>
             {medias.length > 0 ? (
@@ -21,7 +50,13 @@ export default function UserList({ medias }) {
                                 <div className="card-title">{media.title}</div>
 
                                 <div className="dropDownUser">
-                                    <select className="changeStatusUser" value={media.todo}>
+                                    <select
+                                        className="changeStatusUser"
+                                        value={media.todo}
+                                        onChange={(e) => {
+                                            removeTodo(e.target.value, media.id);
+                                        }}
+                                    >
                                         <option value="0">Watching</option>
                                         <option value="2">Want to Watch</option>
                                         <option value="4">Completed</option>

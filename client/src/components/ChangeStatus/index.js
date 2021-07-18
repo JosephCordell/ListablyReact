@@ -6,6 +6,12 @@ export default function ChangeStatus({ media }) {
     const mediaDetails = media;
     const [value, setValue] = useState('default');
 
+
+    //delete id array from object before sending it to the database and just store it from there, no need to delete on the server side 
+
+
+
+
     useEffect(() => {
         if (mediaDetails.media_type === 'movie') {
             const missive = {

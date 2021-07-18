@@ -7,7 +7,6 @@ import './style.css';
 export default function MovieCard({ movie }) {
 
     return (
-        <React.Fragment>
             <div key={movie.id} className={'results-container'}>
                 <div
                     data-title={movie.title}
@@ -36,6 +35,5 @@ export default function MovieCard({ movie }) {
                     </div>
                 </div>
             </div>
-        </React.Fragment >
     );
 }
