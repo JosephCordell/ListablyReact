@@ -63,7 +63,7 @@ export default function MovieCard({ movie }) {
                         <div className={'similar-container'}>
                         { similar.length > 0 
                             ? similar.map((similarThing) => (
-                                <Similar similarThing={similarThing} key={similarThing.id} />)) 
+                                <Similar similarThing={similarThing} key={similarThing.id} type="movie"/>)) 
                             : '' }
                     </div>
 
