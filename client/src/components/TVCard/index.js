@@ -5,6 +5,7 @@ import ReadMore from '../ReadMore';
 import Similar from '../Similar';
 import axios from 'axios';
 import './style.css';
+import noImage from '../../images/placeholder.jpg'
 
 export default function TVCard({ tv }) {
 
@@ -36,8 +37,13 @@ export default function TVCard({ tv }) {
                     data-description={tv.overview}
                 >
                     <div className='card-img-date-desc'>
+                    {!tv.poster_path ? (
+                            <img src={noImage} alt="movie" className={'card-image'} />
+                        ) : (
                         <img src={`https://image.tmdb.org/t/p/w500${tv.poster_path}`} alt="tv" className={'card-image'} />
+                        )}
                         <div className={'card-info'}>
+
                             <div className={'title-date card-title'}>{tv.name}</div>
                             <div className={'description'}> <ReadMore text={tv.overview}>{tv.overview} </ReadMore> </div>
                             <div className='stream'>

@@ -4,11 +4,12 @@ import UserList from '../components/UserList';
 import TabFilter from '../components/TabFilter';
 
 export default function User() {
-    const [medias, setMedias] = useState([]);
+    const [medias, setMedias] = useState(true);
     const [tab, setTab] = useState(['all']);
 
     useEffect(() => {
-        if (localStorage.getItem('todo') === null) {
+        console.log(`type`, typeof(localStorage.getItem('todo')));
+        if (localStorage.getItem('todo') === 'null') {
             setMedias(false);
         } else {
             const midas = localStorage.getItem('todo');
