@@ -42,9 +42,9 @@ useEffect(() => {
                             <img src= {`https://image.tmdb.org/t/p/w500${ trendingMovie.poster_path }`} alt="Movie" className={'image'} />
                             <div className={'overlay'}>
                                 <div className={'col-lg text'}>
-                                    <a href="/trending-movies" className={'fancy'}>
-                                        Movies
-                                    </a>
+                                <h1><a href="/trending-tv">
+                                        MOVIES 
+                                    </a></h1>
                                 </div>
                             </div>
                         </div>
@@ -56,9 +56,9 @@ useEffect(() => {
                             <img src= {`https://image.tmdb.org/t/p/w500${ trendingTv.poster_path }`} alt="TV" className={'image'} />
                             <div className={'overlay'}>
                                 <div className={'col-lg text'}>
-                                    <a href="/trending-tv" className={'fancy'}>
-                                        TV Shows
-                                    </a>
+                                   <h1><a href="/trending-tv">
+                                        TV  
+                                    </a></h1>
                                 </div>
                             </div>
                         </div>
