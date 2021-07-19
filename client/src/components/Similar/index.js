@@ -12,7 +12,7 @@ export default function Similar({ similarThing, type }) {
         <>
           <div className={'similar-card'}>
               <div 
-                key={ similarThing.id }
+                key={ similarThing.id + type}
                 data-title={similarThing.name}
                 data-poster={similarThing.poster_path}
                 data-id={similarThing.id}

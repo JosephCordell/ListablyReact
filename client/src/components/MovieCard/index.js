@@ -58,13 +58,6 @@ export default function MovieCard({ movie }) {
                         </div>
                     </div>
                     <div className={'myRating'}>
-                        {similar.length ? (
-                            <button onClick={reset}>close</button>
-                        ) : (
-                            <button data-id={movie.id} onClick={getSimilar}>
-                                More Like This
-                            </button>
-                        )}
 
                     {similar.length
                         ? <button onClick={ reset }>close</button>
@@ -78,12 +71,8 @@ export default function MovieCard({ movie }) {
                         <div className={'similar-container'}>
                         { similar.length > 0 
                             ? similar.map((similarThing) => (
-                                <Similar similarThing={similarThing} key={similarThing.id} type="movie"/>)) 
+                                <Similar similarThing={similarThing} key={similarThing.id +"movie"} type="movie"/>)) 
                             : '' }
-                    </div>
-
-                    <div className={'similar-container'}>
-                        {similar.length > 0 ? similar.map((similarThing) => <Similar similarThing={similarThing} key={similarThing.id} />) : ''}
                     </div>
                 </div>
             </div>
