@@ -1,21 +1,28 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React from 'react';
+import React, {useState} from 'react';
 import './style.css';
 import API from '../../js/API';
 
-export default function ChangeStatus({ media }) {
+export default function ChangeStatus({ media, displayDropped = false, setShowCard}) {
     const mediaDetails = media;
 
     const addTodo = (value) => {
+        console.log(value, mediaDetails);
+        if (value === '6') {
+            API.todo.delete(value, mediaDetails.id);
+            setShowCard(false);
+            return;
+        }
         if (!API.loggedIn()) {
             document.location.replace('/login');
+            return;
         }
-        if (mediaDetails.media_type === 'movie') {
+        if (mediaDetails.mediatype === 'movie') {
             const missive = {
                 title: mediaDetails.title,
                 release_date: mediaDetails.release_date,
                 poster_path: mediaDetails.poster_path,
-                mediatype: mediaDetails.media_type,
+                mediatype: mediaDetails.mediatype,
                 id: mediaDetails.id,
                 todo: value,
 
@@ -42,7 +49,7 @@ export default function ChangeStatus({ media }) {
             }
         }
 
-        if (mediaDetails.media_type === 'tv') {
+        if (mediaDetails.mediatype === 'tv') {
             const missive = {
                 title: mediaDetails.name,
                 release_date: mediaDetails.first_air_date,
@@ -76,13 +83,18 @@ export default function ChangeStatus({ media }) {
 
     return (
         <React.Fragment>
-            <select className={'changeStatus'} onChange={(e) => addTodo(e.target.value)} defaultValue="default">
+            <select className={'changeStatus'} onChange={(e) => addTodo(e.target.value)} 
+            defaultValue={media.todo ? media.todo: "default"}
+            >
                 <option value="default" disabled hidden>
                     Add to my list:
                 </option>
                 <option value="0">Watching</option>
                 <option value="2">Want to Watch</option>
                 <option value="4">Complete</option>
+                {displayDropped === true
+                    ? <option value="6">Dropped</option>
+                    : null}
             </select>
         </React.Fragment>
     );
