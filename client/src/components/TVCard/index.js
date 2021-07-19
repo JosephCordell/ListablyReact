@@ -14,7 +14,7 @@ export default function TVCard({ tv }) {
     const getSimilar = (event) => {
         const ID = event.target.dataset.id;
         const KEY = process.env.REACT_APP_MOVIE_DB_API_KEY;
-        const URL = `https://api.themoviedb.org/3/movie/${ ID }/similar?api_key=${ KEY }&language=en-US&page=1`;
+        const URL = `https://api.themoviedb.org/3/tv/${ ID }/similar?api_key=${ KEY }&language=en-US&page=1`;
 
         axios.get(URL)
             .then(response => setSimilar(response.data.results))
@@ -65,7 +65,7 @@ export default function TVCard({ tv }) {
                     <div className={'similar-container'}>
                         { similar.length > 0 
                             ? similar.map((similarThing) => (
-                                <Similar similarThing={similarThing} key={similarThing.id} />)) 
+                                <Similar similarThing={similarThing} key={similarThing.id + "tv"} type="tv"/>)) 
                             : '' }
                     </div>
                     

@@ -3,7 +3,7 @@ const path = require('path');
 require('dotenv').config();
 const PORT = process.env.PORT || 3001;
 const app = express();
-const routes = require("./routes");
+const routes = require('./routes');
 const session = require('express-session');
 const compression = require('compression');
 
@@ -33,7 +33,6 @@ app.get('*', (req, res) => {
 app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
-
     console.log(`Connected to Database`);
     app.listen(PORT, () => {
         console.log('🚀  Server server now on port', PORT, '👻 React App on Port 3000');

@@ -1,9 +1,23 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useState, useEffect } from 'react';
+import { reduce } from '../../js/todoFunctions';
+import API from '../../js/API';
+
 import './style.css';
 
-export default function UserList({ medias }) {
+export default function UserList({ medias, setMedias }) {
+    //delete id array from object before sending it to the database and just store it from there, no need to delete on the server side
+
+    const removeTodo = (value, id) => {
+        if (value === '6') {
+            API.todo.delete(value, id);
+            setMedias(medias.filter((media) => media.id !== id));
+        }
+    };
+
+    
     return (
-        <React.Fragment>
+        <React.Fragment>{console.log('length', medias.length)}
             {medias.length > 0 ? (
                 <div className="result-container">
                     {medias.map((media) => (
@@ -21,7 +35,13 @@ export default function UserList({ medias }) {
                                 <div className="card-title">{media.title}</div>
 
                                 <div className="dropDownUser">
-                                    <select className="changeStatusUser" value={media.todo}>
+                                    <select
+                                        className="changeStatusUser"
+                                        value={media.todo}
+                                        onChange={(e) => {
+                                            removeTodo(e.target.value, media.id);
+                                        }}
+                                    >
                                         <option value="0">Watching</option>
                                         <option value="2">Want to Watch</option>
                                         <option value="4">Completed</option>
