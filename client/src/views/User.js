@@ -5,11 +5,12 @@ import TabFilter from '../components/TabFilter';
 import API from '../js/API';
 
 export default function User() {
-    const [medias, setMedias] = useState([]);
+    const [medias, setMedias] = useState(true);
     const [tab, setTab] = useState(['all']);
 
     useEffect(() => {
-        if (localStorage.getItem('todo') === null) {
+        console.log(`type`, typeof(localStorage.getItem('todo')));
+        if (localStorage.getItem('todo') === 'null') {
             setMedias(false);
         } else {
             API.media.get().then(response => {

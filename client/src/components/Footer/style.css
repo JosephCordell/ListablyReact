@@ -8,3 +8,7 @@
     border-top: double gray; 
     border-bottom: double gray; 
 }
+
+.credits{
+    font-size: 0.8rem;
+}

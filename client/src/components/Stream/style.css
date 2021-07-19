@@ -3,6 +3,10 @@
     flex-direction: row;
     flex-wrap: wrap;
 }
+.logo-container p{
+    font-size: 0.8rem;
+}
+
 .provider-logo{
     margin: 5px;
     width: 50px;
