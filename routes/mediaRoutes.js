@@ -1,17 +1,15 @@
 const router = require('express').Router();
 const { Media, User } = require('../models');
-const { Op } = require("sequelize");
+const { Op } = require('sequelize');
 const jwt = require('jsonwebtoken');
-const {authorization } = require ('../config/authorization')
+const { authorization } = require('../config/authorization');
 
 router.post('/add', authorization, async (req, res) => {
     try {
         let userObj;
 
         let user = await User.findOne({ where: { id: req.id } });
-        console.log(user);
         if (!user.todo) {
-
             userObj = [{ id: req.body.id, todo: req.body.todo }];
         } else {
             userObj = JSON.parse(user.todo);
@@ -19,10 +17,8 @@ router.post('/add', authorization, async (req, res) => {
             let found = false;
 
             if (req.body.todo === 6) {
-                userObj.filter((media) => media.id !== req.body.id)    
+                userObj.filter((media) => media.id !== req.body.id);
             } else {
-
-                
                 userObj.forEach((e, index) => {
                     if (e.id === req.body.id) {
                         found = true;
@@ -37,7 +33,7 @@ router.post('/add', authorization, async (req, res) => {
                     userObj.push({ id: req.body.id, todo: req.body.todo });
                 }
             }
-            }
+        }
         const stringUserObj = JSON.stringify(userObj);
         user.todo = stringUserObj;
 
@@ -48,7 +44,6 @@ router.post('/add', authorization, async (req, res) => {
 
         res.status(200).json({ todo: stringUserObj });
     } catch (err) {
-        console.log(err);
         if (err.errors) {
             for (let i = 0; i < err.errors.length; i++) {
                 if (err.errors[i].validatorKey === 'not_unique') {
@@ -63,11 +58,10 @@ router.post('/add', authorization, async (req, res) => {
 
 router.post('/get', async (req, res) => {
     try {
-        let media = await Media.findAll({ where: { id: {[Op.in]: req.body.map((e) => e.id)}}});
+        let media = await Media.findAll({ where: { id: { [Op.in]: req.body.map((e) => e.id) } } });
 
         res.status(200).json(media);
     } catch (err) {
-        console.log(err);
         if (err.errors) {
             for (let i = 0; i < err.errors.length; i++) {
                 if (err.errors[i].validatorKey === 'not_unique') {
@@ -81,8 +75,7 @@ router.post('/get', async (req, res) => {
 });
 
 router.put('/update', authorization, async (req, res) => {
-    
-    await User.update({ todo: req.body}, {where: { id: req.id}} )
+    await User.update({ todo: req.body }, { where: { id: req.id } });
 
     res.status(200);
 });

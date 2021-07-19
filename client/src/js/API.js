@@ -11,24 +11,20 @@ module.exports = {
         },
     },
     todo: {
-
-
         create: async () => {
             return;
         },
-
 
         delete: async (value, id) => {
             const todo = JSON.parse(localStorage.getItem('todo'));
             const newTodo = todo.filter((media) => media.id !== id);
             localStorage.setItem('todo', JSON.stringify(newTodo));
-            console.log(`about to fetch`);
             fetch('/api/users/update', {
                 method: 'PUT',
-                body: JSON.stringify({todo: JSON.stringify(newTodo)}),
-                headers: { 
-                    'Content-type': 'application/json', 
-                    authorization: `Bearer ${localStorage.getItem('token')}` 
+                body: JSON.stringify({ todo: JSON.stringify(newTodo) }),
+                headers: {
+                    'Content-type': 'application/json',
+                    authorization: `Bearer ${localStorage.getItem('token')}`,
                 },
             })
                 .then((response) => response.json())
@@ -36,12 +32,11 @@ module.exports = {
             return newTodo;
         },
 
-
         update: async (value, id) => {
             const todo = JSON.parse(localStorage.getItem('todo'));
-            let found = false 
+            let found = false;
 
-            todo.forEach((e, index)=> {
+            todo.forEach((e, index) => {
                 if (e.id === id) {
                     found = true;
                     if (e.todo === value) {
@@ -59,10 +54,10 @@ module.exports = {
 
             fetch('/api/users/update', {
                 method: 'PUT',
-                body: {todo: todo},
-                headers: { 
-                    'Content-type': 'application/json', 
-                    authorization: `Bearer ${localStorage.getItem('token')}` 
+                body: { todo: todo },
+                headers: {
+                    'Content-type': 'application/json',
+                    authorization: `Bearer ${localStorage.getItem('token')}`,
                 },
             })
                 .then((response) => response.json())
@@ -71,11 +66,9 @@ module.exports = {
         },
     },
     loggedIn: () => {
-        console.log(localStorage.getItem('token'));
-        console.log(typeof(localStorage.getItem('token')));
         if (localStorage.getItem('token') === null) {
-            return false
+            return false;
         }
-        return true
-    }
+        return true;
+    },
 };

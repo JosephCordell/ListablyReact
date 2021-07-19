@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
 import './style.css';
-import API from '../../js/API'
+import API from '../../js/API';
 
 export default function ChangeStatus({ media }) {
     const mediaDetails = media;
@@ -9,7 +9,6 @@ export default function ChangeStatus({ media }) {
     const addTodo = (value) => {
         if (!API.loggedIn()) {
             document.location.replace('/login');
-
         }
         if (mediaDetails.media_type === 'movie') {
             const missive = {
@@ -26,7 +25,6 @@ export default function ChangeStatus({ media }) {
 
             const missiveJSON = JSON.stringify(missive);
             if (value !== 'default') {
-                console.log(`add movie`);
                 fetch('/api/media/add', {
                     method: 'POST',
                     headers: {
@@ -45,7 +43,6 @@ export default function ChangeStatus({ media }) {
         }
 
         if (mediaDetails.media_type === 'tv') {
-            console.log(`TV!!!`);
             const missive = {
                 title: mediaDetails.name,
                 release_date: mediaDetails.first_air_date,
@@ -70,13 +67,12 @@ export default function ChangeStatus({ media }) {
                 })
                     .then((response) => response.json())
                     .then((data) => {
-                        console.log(data.todo);
                         localStorage.setItem('todo', data.todo);
                     })
                     .catch((error) => console.log(error));
             }
         }
-    }
+    };
 
     return (
         <React.Fragment>

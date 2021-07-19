@@ -22,7 +22,6 @@ router.post('/login', async (req, res) => {
     try {
         const userData = await User.findOne({ where: { email: req.body.email } });
         if (!userData) {
-            console.log(`not user`);
             res.status(400).json();
             return;
         }
@@ -31,7 +30,6 @@ router.post('/login', async (req, res) => {
 
         console.log(userData);
         if (!validPassword) {
-            console.log(`not password`);
             res.status(400).json();
             return;
         }
@@ -78,7 +76,6 @@ router.post('/signup', async (req, res) => {
 
 router.put('/update', authorization, async (req, res) => {
     try {
-        console.log(`req.body`, req.body);
         await User.update(req.body, { where: { id: req.id } });
 
         res.status(200);

@@ -9,11 +9,10 @@ export default function User() {
     const [tab, setTab] = useState(['all']);
 
     useEffect(() => {
-        console.log(`type`, typeof(localStorage.getItem('todo')));
         if (localStorage.getItem('todo') === 'null') {
             setMedias(false);
         } else {
-            API.media.get().then(response => {
+            API.media.get().then((response) => {
                 setMedias(response);
             });
         }
