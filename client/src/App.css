@@ -2,6 +2,21 @@
 h1 {
     padding: 20px;
     text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+h1:hover {
+    text-shadow: 2px 1px palegoldenrod;
+    color: orchid;
+}
+
+h2 {
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+h3 {
+    color: orchid;
 }
 
 a {
@@ -13,6 +28,7 @@ a {
     color: white;
     font-weight: bold;
 }
+
 .container {
     position: relative;
     width: 400px;
@@ -24,6 +40,19 @@ a {
 .image {
     width: 100%;
     height: auto;
+}
+
+button {
+    border-radius: 10px;
+    background-color: gainsboro;
+    font-weight: bold;
+    color: orchid;
+}
+
+select {
+    border-radius: 10px;
+    background-color: gainsboro;
+    font-weight: bold;
 }
 
 .overlay {
@@ -71,20 +100,8 @@ section {
     padding-bottom: 0;
 }
 
-.card-container {
-    background-color: lightgray;
-    padding: 20px;
-    border-radius: 10px;
-    margin-right: 20px;
-    margin-top: 10px;
-}
-
 .date {
     margin-left: 10px;
-}
-
-.description {
-    width: 50%;
 }
 
 .myRating {
@@ -93,13 +110,6 @@ section {
 
 .results {
     margin: 20px;
-}
-
-.result-container {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    justify-content: center;
 }
 
 .error {
@@ -235,4 +245,31 @@ section {
     display: flex;
     justify-content: center;
     font-weight: bold;
+}
+
+#big-shell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@media screen and (min-width: 1200px) {
+    #big-shell{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        justify-content: space-around;
+    }
+}
+
+@media screen and (max-width: 1200px) and (min-width: 800px) {
+    #big-shell{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        justify-content: space-around;
+    }
 }

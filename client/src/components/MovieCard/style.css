@@ -1,10 +1,21 @@
+@media screen and (min-width: 1200px) {
+    .results-container {
+        width: 30%;
+        }
+}
+
+@media screen and (max-width: 1200px) and (min-width: 750px) {
+    .results-container {
+        width: 50%;
+    }
+}
+
 .results-container {
-    background-color: lightgray;
-    padding: 20px;
-    border-radius: 10px;
-    width: 47%;
-    max-width: 500px;
-    margin: 20px;
+    background-color: black;
+    margin: 7px 10px 7px 10px;
+    border: 2px solid ghostwhite;
+    border-radius: 15px;
+    width: 95%;
 }
 
 .card-info {
@@ -15,20 +26,33 @@
 
 .card-img-date-desc{
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
     width: 100%;
 }
+
 .card-image {
-    width: auto;
-    height: 100%;
-    max-height: 27vh;
+    width: 28vh;
+    height: auto;
+    margin: 10px;
+    border-top: 6px solid ghostwhite;
+    border-right: 1px solid ghostwhite;
+    border-bottom: 1px solid ghostwhite;
+    border-left: 6px solid ghostwhite;
+    border-radius: 15px;
 }
 
 .title-date {
     display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 .card-title {
+    display: flex;
+    flex-direction: column;
     margin-bottom: 0;
     margin-left: 20px;
     font-size: 1.3rem;
@@ -39,25 +63,41 @@
 }
 
 .description {
-    margin-left: 20px;
-    width: 90%;
+    margin: 10px 30px 10px 30px;
+    font-size: 1.5vh;
 }
 
-.stream{
-    margin-left: 20px;
-    margin-top: 10px;
+.stream {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .availability{
-    margin-bottom: 0;
+    text-align: center;
     font-weight: bold;
-    font-size: 0.9rem;
     font-style: italic;
 }
 
 .myRating {
     display: flex;
-    margin-top: 10px;
-    width: 100%;
     justify-content: center;
+    margin: 10px;   
+}
+
+@media screen and (min-width: 1200px) {
+    .results-container {
+        width: 30%;
+    }
+}
+
+@media screen and (max-width: 1200px) and (min-width: 800px) {
+    .results-container {
+        width: 45%;
+    }
+
+    .card-image {
+        width: 25vh;
+        height: auto;
+    }
 }

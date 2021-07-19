@@ -44,15 +44,15 @@ export default function MovieCard({ movie }) {
                         )}
                         <div className={'card-info'}>
                             <div className={'title-date'}>
-                                <div className={'card-title'}>{movie.title}</div>
-                                <div className={'date'}>({movie.release_date})</div>
+                                <h2>{movie.title}</h2>
+                                <h3>{movie.release_date}</h3>
                             </div>
                             <div className={'description'}>
                                 {' '}
                                 <ReadMore text={movie.overview}>{movie.overview}</ReadMore>{' '}
                             </div>
-                            <div className="stream">
                                 <p className="availability">Available online at:</p>
+                            <div className="stream">
                                 <Stream movieID={movie.id} key={movie.id} />
                             </div>
                         </div>
