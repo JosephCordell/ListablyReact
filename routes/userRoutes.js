@@ -72,4 +72,16 @@ router.post('/signup', async (req, res) => {
     }
 });
 
+router.put('/update', authorization, async (req, res) => {
+    
+    await User.update( req.body, {where: { id: req.id}} )
+
+    res.status(200);
+});
+
+
+
+
+
+
 module.exports = router;

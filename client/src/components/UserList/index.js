@@ -1,24 +1,22 @@
+import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import { reduce } from '../../js/todoFunctions'
+import { reduce } from '../../js/todoFunctions';
+import API from '../../js/API';
 
 import './style.css';
 
-export default function UserList({ medias }) {
-    const [media, setMedia] = useState(medias);
-    const [todo, setTodo ] = useState([])
-
+export default function UserList({ medias, setMedias }) {
     //delete id array from object before sending it to the database and just store it from there, no need to delete on the server side
 
     const removeTodo = (value, id) => {
         if (value === '6') {
-            console.log(`Time to remove Todo`, id);
-            let todo = []
-            todo = localStorage.getItem('todo');
-            console.log(todo);
-            // setTodo(todo.filter((media) => media.id !== id))
-            // console.log(todo);
-            let newTodo = reduce(todo, id)
-            console.log(newTodo);
+            API.todo.delete(value, id);
+            setMedias(medias.filter((media) => media.id !== id));
+                
+
+
+            //let newTodo = reduce(todo, id);
+            // console.log(newTodo);
 
             /*         fetch('/api/media/delete', {
             method: 'DELETE',
@@ -31,8 +29,9 @@ export default function UserList({ medias }) {
         }
     };
 
+    
     return (
-        <React.Fragment>
+        <React.Fragment>{console.log('length', medias.length)}
             {medias.length > 0 ? (
                 <div className="result-container">
                     {medias.map((media) => (

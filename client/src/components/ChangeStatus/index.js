@@ -1,18 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './style.css';
 
 export default function ChangeStatus({ media }) {
     const mediaDetails = media;
-    const [value, setValue] = useState('default');
 
-
-    //delete id array from object before sending it to the database and just store it from there, no need to delete on the server side 
-
-
-
-
-    useEffect(() => {
+    const addTodo = (value) => {
         if (mediaDetails.media_type === 'movie') {
             const missive = {
                 title: mediaDetails.title,
@@ -77,11 +70,11 @@ export default function ChangeStatus({ media }) {
                     .catch((error) => console.log(error));
             }
         }
-    }, [value]);
+    }
 
     return (
         <React.Fragment>
-            <select className={'changeStatus'} onChange={(e) => setValue(e.target.value)} defaultValue="default">
+            <select className={'changeStatus'} onChange={(e) => addTodo(e.target.value)} defaultValue="default">
                 <option value="default" disabled hidden>
                     Add to my list:
                 </option>
