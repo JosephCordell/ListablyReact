@@ -6,44 +6,52 @@ const { authorization } = require('../config/authorization');
 
 router.post('/add', authorization, async (req, res) => {
     try {
-        let userObj;
+        let todoArr;
 
         let user = await User.findOne({ where: { id: req.id } });
         if (!user.todo) {
-            userObj = [{ id: req.body.id, todo: req.body.todo }];
+            todoArr = [{ id: req.body.id, todo: req.body.todo }];
         } else {
-            userObj = JSON.parse(user.todo);
+            todoArr = JSON.parse(user.todo);
 
             let found = false;
 
             if (req.body.todo === 6) {
-                userObj.filter((media) => media.id !== req.body.id);
+                todoArr.filter((media) => media.id !== req.body.id);
             } else {
-                userObj.forEach((e, index) => {
+                todoArr.forEach((e, index) => {
                     if (e.id === req.body.id) {
                         found = true;
                         if (e.todo === req.body.todo) {
                             return;
                         } else {
-                            userObj[index].todo = req.body.todo;
+                            todoArr[index].todo = req.body.todo;
                         }
                     }
                 });
                 if (!found) {
-                    userObj.push({ id: req.body.id, todo: req.body.todo });
+                    todoArr.push({ id: req.body.id, todo: req.body.todo });
                 }
             }
         }
-        const stringUserObj = JSON.stringify(userObj);
+        const stringUserObj = JSON.stringify(todoArr);
         user.todo = stringUserObj;
 
         user = await user.save();
-        const newMedia = await Media.create({
-            ...req.body,
-        });
+        Media.findByPk(req.body.id).then(result => {
+            console.log({result});
+            if (!result) {
+                Media.create({
+                    ...req.body,
+                })
+            }
+        })
+
+        console.log(stringUserObj);
 
         res.status(200).json({ todo: stringUserObj });
     } catch (err) {
+        console.log(err);
         if (err.errors) {
             for (let i = 0; i < err.errors.length; i++) {
                 if (err.errors[i].validatorKey === 'not_unique') {
@@ -83,9 +91,9 @@ router.put('/update', authorization, async (req, res) => {
 router.post('/delete', async (req, res) => {
     let mediaArr = [];
     try {
-        let userObj;
-        userObj = req.body;
-        for (const e of userObj) {
+        let todoArr;
+        todoArr = req.body;
+        for (const e of todoArr) {
             todoArr = e.id;
             todoNum = e.todo;
             let almost = await Media.findOne({ where: { id: todoArr } });
@@ -107,21 +115,21 @@ router.post('/delete', async (req, res) => {
 router.delete('/delete', async (req, res) => {
     let user = await User.findByPk(req.session.user_id);
 
-    let userObj;
-    userObj = await JSON.parse(user.todo);
+    let todoArr;
+    todoArr = await JSON.parse(user.todo);
     let found = false;
 
-    for (let i = 0; i < userObj.length; i++) {
-        if (userObj[i][0] === req.body.id) {
+    for (let i = 0; i < todoArr.length; i++) {
+        if (todoArr[i][0] === req.body.id) {
             found = true;
             let index = i;
             if (index > -1) {
-                userObj.splice(index, 1);
+                todoArr.splice(index, 1);
             }
         }
     }
 
-    const stringUserObj = JSON.stringify(userObj);
+    const stringUserObj = JSON.stringify(todoArr);
 
     user.todo = stringUserObj;
 
