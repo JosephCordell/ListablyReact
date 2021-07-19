@@ -2,27 +2,16 @@ const router = require('express').Router();
 const { Media, User } = require('../models');
 const { Op } = require("sequelize");
 const jwt = require('jsonwebtoken');
-
-
-const authorization = () => {
-    
-    if (!req.headers.authorization) {
-        res.status(401).end();
-        return;
-    }
-
-    const token = req.headers.authorization;
-
-    var decoded = jwt.verify(token.slice(7), process.env.JWTSECRET);
-    req.id = decoded.data
-}
+const {authorization } = require ('../config/authorization')
 
 router.post('/add', authorization, async (req, res) => {
     try {
         let userObj;
 
         let user = await User.findOne({ where: { id: req.id } });
+        console.log(user);
         if (!user.todo) {
+
             userObj = [{ id: req.body.id, todo: req.body.todo }];
         } else {
             userObj = JSON.parse(user.todo);

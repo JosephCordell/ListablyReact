@@ -12,20 +12,6 @@ export default function UserList({ medias, setMedias }) {
         if (value === '6') {
             API.todo.delete(value, id);
             setMedias(medias.filter((media) => media.id !== id));
-                
-
-
-            //let newTodo = reduce(todo, id);
-            // console.log(newTodo);
-
-            /*         fetch('/api/media/delete', {
-            method: 'DELETE',
-            headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(id),
-        }) */
         }
     };
 

@@ -22,10 +22,10 @@ module.exports = {
             const todo = JSON.parse(localStorage.getItem('todo'));
             const newTodo = todo.filter((media) => media.id !== id);
             localStorage.setItem('todo', JSON.stringify(newTodo));
-
-            fetch('/api/user/update', {
+            console.log(`about to fetch`);
+            fetch('/api/users/update', {
                 method: 'PUT',
-                body: newTodo,
+                body: JSON.stringify({todo: JSON.stringify(newTodo)}),
                 headers: { 
                     'Content-type': 'application/json', 
                     authorization: `Bearer ${localStorage.getItem('token')}` 
@@ -57,7 +57,7 @@ module.exports = {
 
             localStorage.setItem('todo', JSON.stringify(todo));
 
-            fetch('/api/user/update', {
+            fetch('/api/users/update', {
                 method: 'PUT',
                 body: {todo: todo},
                 headers: { 
@@ -70,4 +70,12 @@ module.exports = {
             return todo;
         },
     },
+    loggedIn: () => {
+        console.log(localStorage.getItem('token'));
+        console.log(typeof(localStorage.getItem('token')));
+        if (localStorage.getItem('token') === null) {
+            return false
+        }
+        return true
+    }
 };

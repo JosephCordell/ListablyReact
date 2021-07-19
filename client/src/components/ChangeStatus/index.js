@@ -1,11 +1,16 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
 import './style.css';
+import API from '../../js/API'
 
 export default function ChangeStatus({ media }) {
     const mediaDetails = media;
 
     const addTodo = (value) => {
+        if (!API.loggedIn()) {
+            document.location.replace('/login');
+
+        }
         if (mediaDetails.media_type === 'movie') {
             const missive = {
                 title: mediaDetails.title,
@@ -20,8 +25,8 @@ export default function ChangeStatus({ media }) {
             };
 
             const missiveJSON = JSON.stringify(missive);
-
             if (value !== 'default') {
+                console.log(`add movie`);
                 fetch('/api/media/add', {
                     method: 'POST',
                     headers: {
@@ -65,6 +70,7 @@ export default function ChangeStatus({ media }) {
                 })
                     .then((response) => response.json())
                     .then((data) => {
+                        console.log(data.todo);
                         localStorage.setItem('todo', data.todo);
                     })
                     .catch((error) => console.log(error));
