@@ -9,7 +9,7 @@ import SearchResults from './views/SearchResults';
 import TrendingMovies from './views/TrendingMovies';
 import Login from './views/Login';
 import TrendingTv from './views/TrendingTv';
-import Footer from './components/Footer'; 
+import Footer from './components/Footer';
 import axios from 'axios';
 import User from './views/User';
 
@@ -22,15 +22,18 @@ const App = () => {
 
     useEffect(() => {
         if (localStorage.getItem('token') && localStorage.getItem('loggedIn') !== 'true') {
-            axios.post('/api/users/login', {}, { headers: { authorization: `Bearer ${localStorage.getItem('token')}` } }).then((response) => {
-                if (response.status === 200) {
-                    setUser({ ...user, loggedIn: response.data.logged_in });
-                    localStorage.setItem(`loggedIn`, true);
-                } else {
-                    setUser({ ...user, loggedIn: false });
-                    localStorage.removeItem(`loggedIn`);
-                }
-            }).catch((error) => console.log(error));
+            axios
+                .post('/api/users/login', {}, { headers: { authorization: `Bearer ${localStorage.getItem('token')}` } })
+                .then((response) => {
+                    if (response.status === 200) {
+                        setUser({ ...user, loggedIn: response.data.logged_in });
+                        localStorage.setItem(`loggedIn`, true);
+                    } else {
+                        setUser({ ...user, loggedIn: false });
+                        localStorage.removeItem(`loggedIn`);
+                    }
+                })
+                .catch((error) => console.log(error));
         }
     }, []);
 

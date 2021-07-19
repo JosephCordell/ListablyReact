@@ -2,29 +2,19 @@
 import React, { useEffect, useState } from 'react';
 import UserList from '../components/UserList';
 import TabFilter from '../components/TabFilter';
+import API from '../js/API';
 
 export default function User() {
     const [medias, setMedias] = useState(true);
     const [tab, setTab] = useState(['all']);
 
     useEffect(() => {
-        console.log(`type`, typeof(localStorage.getItem('todo')));
         if (localStorage.getItem('todo') === 'null') {
             setMedias(false);
         } else {
-            const midas = localStorage.getItem('todo');
-            const fetchData = async () => {
-                await fetch('/api/media/todo', {
-                    method: 'POST',
-                    body: midas,
-                    headers: { 'Content-type': 'application/json' },
-                })
-                    .then((response) => response.json())
-                    .then((data) => {
-                        setMedias(data.media);
-                    });
-            };
-            fetchData();
+            API.media.get().then((response) => {
+                setMedias(response);
+            });
         }
     }, []);
 
@@ -61,7 +51,7 @@ export default function User() {
 
             <section>
                 <div className="">
-                    <UserList medias={medias} />
+                    <UserList medias={medias} setMedias={setMedias} />
                 </div>
             </section>
         </React.Fragment>

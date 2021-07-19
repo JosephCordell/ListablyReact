@@ -26,7 +26,6 @@ export default function MovieCard({ movie }) {
     };
 
     return (
-        <React.Fragment>
             <div key={movie.id} className={'results-container'}>
                 <div
                     data-title={movie.title}
@@ -58,22 +57,23 @@ export default function MovieCard({ movie }) {
                         </div>
                     </div>
                     <div className={'myRating'}>
-                        {similar.length ? (
-                            <button onClick={reset}>close</button>
-                        ) : (
-                            <button data-id={movie.id} onClick={getSimilar}>
-                                More Like This
-                            </button>
-                        )}
 
-                        <ChangeStatus media={movie} />
-                    </div>
+                    {similar.length
+                        ? <button onClick={ reset }>close</button>
+                        : <button data-id={ movie.id } onClick={ getSimilar }>More Like This</button>
+                    }
 
-                    <div className={'similar-container'}>
-                        {similar.length > 0 ? similar.map((similarThing) => <Similar similarThing={similarThing} key={similarThing.id} />) : ''}
+                        < ChangeStatus media={ movie }/>
+                        
+                        </div>
+
+                        <div className={'similar-container'}>
+                        { similar.length > 0 
+                            ? similar.map((similarThing) => (
+                                <Similar similarThing={similarThing} key={similarThing.id +"movie"} type="movie"/>)) 
+                            : '' }
                     </div>
                 </div>
             </div>
-        </React.Fragment>
     );
 }

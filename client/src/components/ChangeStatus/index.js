@@ -1,12 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './style.css';
+import API from '../../js/API';
 
 export default function ChangeStatus({ media }) {
     const mediaDetails = media;
-    const [value, setValue] = useState('default');
 
-    useEffect(() => {
+    const addTodo = (value) => {
+        if (!API.loggedIn()) {
+            document.location.replace('/login');
+        }
         if (mediaDetails.media_type === 'movie') {
             const missive = {
                 title: mediaDetails.title,
@@ -21,23 +24,21 @@ export default function ChangeStatus({ media }) {
             };
 
             const missiveJSON = JSON.stringify(missive);
-
             if (value !== 'default') {
-                if (missive.mediatype === 'movie')
-                    fetch('/api/media/add', {
-                        method: 'POST',
-                        headers: {
-                            Accept: 'application/json',
-                            'Content-Type': 'application/json',
-                            authorization: `Bearer ${localStorage.getItem('token')}`,
-                        },
-                        body: missiveJSON,
+                fetch('/api/media/add', {
+                    method: 'POST',
+                    headers: {
+                        Accept: 'application/json',
+                        'Content-Type': 'application/json',
+                        authorization: `Bearer ${localStorage.getItem('token')}`,
+                    },
+                    body: missiveJSON,
+                })
+                    .then((response) => response.json())
+                    .then((data) => {
+                        localStorage.setItem('todo', data.todo);
                     })
-                        .then((response) => response.json())
-                        .then((data) => {
-                            localStorage.setItem('todo', data.todo);
-                        })
-                        .catch((error) => console.log(error));
+                    .catch((error) => console.log(error));
             }
         }
 
@@ -55,29 +56,27 @@ export default function ChangeStatus({ media }) {
             };
             if (value !== 'default') {
                 const missiveJSON = JSON.stringify(missive);
-
-                if (missive.mediatype === 'movie')
-                    fetch('/api/media/add', {
-                        method: 'POST',
-                        headers: {
-                            Accept: 'application/json',
-                            'Content-Type': 'application/json',
-                            authorization: `Bearer ${localStorage.getItem('token')}`,
-                        },
-                        body: missiveJSON,
+                fetch('/api/media/add', {
+                    method: 'POST',
+                    headers: {
+                        Accept: 'application/json',
+                        'Content-Type': 'application/json',
+                        authorization: `Bearer ${localStorage.getItem('token')}`,
+                    },
+                    body: missiveJSON,
+                })
+                    .then((response) => response.json())
+                    .then((data) => {
+                        localStorage.setItem('todo', data.todo);
                     })
-                        .then((response) => response.json())
-                        .then((data) => {
-                            localStorage.setItem('todo', data.todo);
-                        })
-                        .catch((error) => console.log(error));
+                    .catch((error) => console.log(error));
             }
         }
-    }, [value]);
+    };
 
     return (
         <React.Fragment>
-            <select className={'changeStatus'} onChange={(e) => setValue(e.target.value)} defaultValue="default">
+            <select className={'changeStatus'} onChange={(e) => addTodo(e.target.value)} defaultValue="default">
                 <option value="default" disabled hidden>
                     Add to my list:
                 </option>
