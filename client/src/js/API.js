@@ -1,4 +1,5 @@
-module.exports = {
+/* eslint-disable import/no-anonymous-default-export */
+export default {
     media: {
         get: async () => {
             return await fetch('/api/media/get', {
