@@ -41,12 +41,14 @@ const App = () => {
         <React.Fragment>
             <Header user={user} setUser={setUser} loggedIn={user.loggedIn} />
             <Switch>
-                <Route path="/trending-movies" component={TrendingMovies} />
-                <Route path="/trending-tv" component={TrendingTv} />
-                <Route path="/signup" component={SignUp} />
-                <Route path="/login" component={Login} />
-                <Route path="/user" component={User} />
-                <Route path="/results">
+
+                <Route exact path="/trending-movies" component={TrendingMovies} />
+                <Route exact path="/trending-tv" component={TrendingTv} />
+                <Route exact path="/signup" component={SignUp} />
+                <Route exact path="/login" component={Login} />
+                <Route exact path="/user" component={User} />
+                <Route exact path="/results">
+
                     <SearchResults user={user} setUser={setUser} />
                 </Route>
                 <Route path="/" component={Homepage} />
