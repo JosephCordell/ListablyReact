@@ -7,9 +7,9 @@
 		"node": "14.x"
 	},
 	"scripts": {
-		"start": "npx if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+		"start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
 		"start:prod": "node server.js",
-		"start:dev": "npx concurrently \"npx nodemon --ignore 'client/*'\" \"npm run client\"",
+		"start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
 		"install": "cd client && npm install",
 		"client": "cd client && npm run start",
 		"build": "cd client && npm run build",
@@ -26,12 +26,13 @@
 		"compression": "^1.7.4",
 		"concurrently": "^6.2.0",
 		"connect-session-sequelize": "^7.1.1",
-		"dotenv": "^9.0.2",
+		"dotenv": "^10.0.0",
 		"express": "^4.17.1",
 		"express-session": "^1.17.2",
 		"if-env": "^1.0.4",
 		"jsonwebtoken": "^8.5.1",
 		"mysql2": "^2.2.5",
+		"nodemon": "^2.0.12",
 		"sequelize": "^6.6.5"
 	},
 	"devDependencies": {

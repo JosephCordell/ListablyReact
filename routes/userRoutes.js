@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const User = require('../models/User');
+const { authorization } = require('../config/authorization');
 const jwt = require('jsonwebtoken');
 
 router.post('/login', async (req, res) => {
@@ -20,7 +21,6 @@ router.post('/login', async (req, res) => {
 
     try {
         const userData = await User.findOne({ where: { email: req.body.email } });
-
         if (!userData) {
             res.status(400).json();
             return;
@@ -42,6 +42,7 @@ router.post('/login', async (req, res) => {
             res.status(200).json({ todo: userData.todo, ratings: userData.ratings, logged_in: true, token: req.session.token });
         });
     } catch (err) {
+        console.log(err);
         res.status(400).json(err);
     }
 });
@@ -68,6 +69,17 @@ router.post('/signup', async (req, res) => {
             res.status(200).json({ token: req.session.token });
         });
     } catch (err) {
+        res.status(400).json(err);
+    }
+});
+
+router.put('/update', authorization, async (req, res) => {
+    try {
+        await User.update(req.body, { where: { id: req.id } });
+
+        res.status(200);
+    } catch (err) {
+        console.log(err);
         res.status(400).json(err);
     }
 });

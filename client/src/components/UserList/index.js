@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './style.css';
+<<<<<<< HEAD
 import Similar from '../Similar';
 import axios from 'axios';
 
@@ -21,11 +22,21 @@ export default function UserList({ medias }) {
         setSimilar([]);
     };
 
+=======
+import UserCard from '../UserCard';
+import Stream from '../Stream';
+
+
+export default function UserList({ medias, setMedias, value, type, id }) {
+
+
+>>>>>>> main
     return (
         <React.Fragment>
             {medias.length > 0 ? (
                 <div className="result-container">
                     {medias.map((media) => (
+<<<<<<< HEAD
                         <div className={`card-container ${media.mediatype}`}>
                             <div
                                 className="card-info "
@@ -65,6 +76,10 @@ export default function UserList({ medias }) {
                     </div>
                             </div>
                         </div>
+=======
+                        <UserCard media={media} type={type} id={id} key={media.id} 
+                        />
+>>>>>>> main
                     ))}
                 </div>
             ) : (

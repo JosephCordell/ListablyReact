@@ -26,7 +26,11 @@ if (loading) return 'Loading...';
 return (
   <React.Fragment>
     <div className={'results'}>
+<<<<<<< HEAD
       <h1>Top 25 Trending TV Shows</h1>
+=======
+      <h2>Top 20 Trending TV Shows</h2>
+>>>>>>> main
     </div>
     <div id='big-shell'>
     {tvShows.map((tv) => (

@@ -39,9 +39,13 @@ const Header = ({user, setUser, loggedIn}) => {
                         <li className={'nav-item'}>
                             <a className={'nav-link'}   href="/trending-tv" >TV Shows</a>
                         </li>
-                        <li className={'nav-item'}>
+                        { loggedIn ? (
+                            
+                            <li className={'nav-item'}>
                             <a className={'nav-link'}   href="/user" >My Lists</a>
                         </li>
+                            ):
+                            ''}
                     </ul>
                 </div>
                 <SearchBar user = {user} setUser = {setUser}/>

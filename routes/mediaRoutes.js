@@ -1,49 +1,50 @@
 const router = require('express').Router();
 const { Media, User } = require('../models');
+const { Op } = require('sequelize');
 const jwt = require('jsonwebtoken');
-const e = require('express');
+const { authorization } = require('../config/authorization');
 
-router.post('/add', async (req, res) => {
+router.post('/add', authorization, async (req, res) => {
     try {
-        let userObj;
-        if (!req.headers.authorization) {
-            res.status(401).end();
-            return;
-        }
+        let todoArr;
 
-        const token = req.headers.authorization;
-
-        var decoded = jwt.verify(token.slice(7), process.env.JWTSECRET);
-
-        let user = await User.findOne({ where: { id: decoded.data } });
+        let user = await User.findOne({ where: { id: req.id } });
         if (!user.todo) {
-            userObj = [{ id: req.body.id, todo: req.body.todo }];
+            todoArr = [{ id: req.body.id, todo: req.body.todo }];
         } else {
-            userObj = JSON.parse(user.todo);
+            todoArr = JSON.parse(user.todo);
 
             let found = false;
 
-            userObj.forEach((e, index) => {
-                if (e.id === req.body.id) {
-                    found = true;
-                    if (e.todo === req.body.todo) {
-                        return;
-                    } else {
-                        userObj[index].todo = req.body.todo;
+            if (req.body.todo === 6) {
+                todoArr.filter((media) => media.id !== req.body.id);
+            } else {
+                todoArr.forEach((e, index) => {
+                    if (e.id === req.body.id) {
+                        found = true;
+                        if (e.todo === req.body.todo) {
+                            return;
+                        } else {
+                            todoArr[index].todo = req.body.todo;
+                        }
                     }
+                });
+                if (!found) {
+                    todoArr.push({ id: req.body.id, todo: req.body.todo });
                 }
-            });
-            if (!found) {
-                userObj.push({ id: req.body.id, todo: req.body.todo });
             }
         }
-        const stringUserObj = JSON.stringify(userObj);
+        const stringUserObj = JSON.stringify(todoArr);
         user.todo = stringUserObj;
 
         user = await user.save();
-        const newMedia = await Media.create({
-            ...req.body,
-        });
+        Media.findByPk(req.body.id).then(result => {
+            if (!result) {
+                Media.create({
+                    ...req.body,
+                })
+            }
+        })
 
         res.status(200).json({ todo: stringUserObj });
     } catch (err) {
@@ -60,12 +61,36 @@ router.post('/add', async (req, res) => {
     }
 });
 
-router.post('/todo', async (req, res) => {
+router.post('/get', async (req, res) => {
+    try {
+        let media = await Media.findAll({ where: { id: { [Op.in]: req.body.map((e) => e.id) } } });
+
+        res.status(200).json(media);
+    } catch (err) {
+        if (err.errors) {
+            for (let i = 0; i < err.errors.length; i++) {
+                if (err.errors[i].validatorKey === 'not_unique') {
+                    res.status(200).json('Success!');
+                    return;
+                }
+            }
+        }
+        res.status(400).json(err);
+    }
+});
+
+router.put('/update', authorization, async (req, res) => {
+    await User.update({ todo: req.body }, { where: { id: req.id } });
+
+    res.status(200);
+});
+
+router.post('/delete', async (req, res) => {
     let mediaArr = [];
     try {
-        let userObj;
-        userObj = req.body;
-        for (const e of userObj) {
+        let todoArr;
+        todoArr = req.body;
+        for (const e of todoArr) {
             todoArr = e.id;
             todoNum = e.todo;
             let almost = await Media.findOne({ where: { id: todoArr } });
@@ -84,24 +109,24 @@ router.post('/todo', async (req, res) => {
     }
 });
 
-router.delete('/', async (req, res) => {
+router.delete('/delete', async (req, res) => {
     let user = await User.findByPk(req.session.user_id);
 
-    let userObj;
-    userObj = await JSON.parse(user.todo);
+    let todoArr;
+    todoArr = await JSON.parse(user.todo);
     let found = false;
 
-    for (let i = 0; i < userObj.length; i++) {
-        if (userObj[i][0] === req.body.id) {
+    for (let i = 0; i < todoArr.length; i++) {
+        if (todoArr[i][0] === req.body.id) {
             found = true;
             let index = i;
             if (index > -1) {
-                userObj.splice(index, 1);
+                todoArr.splice(index, 1);
             }
         }
     }
 
-    const stringUserObj = JSON.stringify(userObj);
+    const stringUserObj = JSON.stringify(todoArr);
 
     user.todo = stringUserObj;
 
