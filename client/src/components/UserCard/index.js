@@ -2,8 +2,9 @@
 import React, { useState } from 'react';
 import './style.css';
 import ChangeStatus from '../ChangeStatus';
+import Stream from '../Stream';
 
-export default function UserCard({ media }) {
+export default function UserCard({ media, id }) {
     const [showCard, setShowCard] = useState(true);
     if(!showCard){
         return null;
@@ -23,7 +24,9 @@ export default function UserCard({ media }) {
             >
                 <img src={`https://image.tmdb.org/t/p/w500${media.poster_path}`} alt={media.mediatype} className="card-image" />
                 <div className="card-title">{media.title}</div>
-
+                {media.mediatype === 'movie'
+                    ? <Stream movieID={media.id} key={media.id} />
+                    : <Stream tvID={media.id} key={media.id} />}
                 <ChangeStatus displayDropped={true} media={media} setShowCard={setShowCard}/>
             </div>
         </div>
