@@ -1,12 +1,11 @@
 /* *{ border: 1px solid red; } */
 h1 {
     padding: 20px;
-    text-decoration: none;
     font-family: 'Poppins', sans-serif;
 }
 
 h1:hover {
-    text-shadow: 2px 1px palegoldenrod;
+    text-shadow: .5px .5px palegoldenrod;
     color: orchid;
 }
 
@@ -17,10 +16,21 @@ h2 {
 
 h3 {
     color: orchid;
+    text-align: center;
 }
 
 a {
     text-decoration: none;
+}
+
+.special-link {
+    color: ghostwhite;  
+    transform: skew(5deg);
+}
+
+.special-link:hover {
+    color: orchid;
+    transform: skew(10deg);
 }
 
 .fancy {
@@ -31,15 +41,20 @@ a {
 
 .container {
     position: relative;
-    width: 400px;
-    height: 400px;
+    width: auto;
+    height: fit-content;
     overflow: hidden;
-    border-radius: 50%;
 }
 
 .image {
-    width: 100%;
+    width: auto;
     height: auto;
+    margin: 10px;
+    border-top: 6px solid ghostwhite;
+    border-right: 1px solid ghostwhite;
+    border-bottom: 1px solid ghostwhite;
+    border-left: 6px solid ghostwhite;
+    border-radius: 15px;
 }
 
 button {
@@ -247,11 +262,20 @@ section {
     font-weight: bold;
 }
 
+.home-container {
+    background-color: black;
+    margin: 45px;
+    border: 2px solid ghostwhite;
+    border-radius: 15px;
+    width: fit-content;
+    height: auto;
+}
+
 #big-shell {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 @media screen and (min-width: 1200px) {
