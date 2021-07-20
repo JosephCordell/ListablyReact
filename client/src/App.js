@@ -3,7 +3,7 @@ import './App.css';
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Homepage from './views/Homepage';
-import { Route, Switch /* , Redirect */ } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import SignUp from './views/SignUp';
 import SearchResults from './views/SearchResults';
 import TrendingMovies from './views/TrendingMovies';
