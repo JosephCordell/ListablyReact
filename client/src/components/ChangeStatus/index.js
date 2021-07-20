@@ -7,7 +7,6 @@ export default function ChangeStatus({ media, displayDropped = false, setShowCar
     const mediaDetails = media;
 
     const addTodo = (value) => {
-        console.log(value, mediaDetails);
         if (value === '6') {
             API.todo.delete(value, mediaDetails.id);
             setShowCard(false);
@@ -17,7 +16,6 @@ export default function ChangeStatus({ media, displayDropped = false, setShowCar
             document.location.replace('/login');
             return;
         }
-        console.log(mediaDetails);
         if (mediaDetails.mediatype === 'movie' || mediaDetails.media_type === 'movie') {
             const missive = {
                 title: mediaDetails.title,

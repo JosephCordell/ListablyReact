@@ -39,15 +39,12 @@ router.post('/add', authorization, async (req, res) => {
 
         user = await user.save();
         Media.findByPk(req.body.id).then(result => {
-            console.log({result});
             if (!result) {
                 Media.create({
                     ...req.body,
                 })
             }
         })
-
-        console.log(stringUserObj);
 
         res.status(200).json({ todo: stringUserObj });
     } catch (err) {

@@ -29,7 +29,7 @@ export default function TrendingMovies() {
     return (
         <React.Fragment>
             <div className={'results'}>
-                <h2>Top 25 Trending Movies</h2>
+                <h2>Top 20 Trending Movies</h2>
             </div>
 
             <div className='result-container'>
