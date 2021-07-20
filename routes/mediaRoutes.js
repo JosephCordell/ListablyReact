@@ -37,13 +37,13 @@ router.post('/add', authorization, async (req, res) => {
         const stringUserObj = JSON.stringify(todoArr);
         user.todo = stringUserObj;
         user = await user.save();
-        Media.findByPk(req.body.id).then(result => {
+        Media.findByPk(req.body.id).then((result) => {
             if (!result) {
                 Media.create({
                     ...req.body,
-                })
+                });
             }
-        })
+        });
 
         res.status(200).json({ todo: stringUserObj });
     } catch (err) {
