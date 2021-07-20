@@ -63,7 +63,7 @@ export default function User() {
 
             <section>
                 <div className="">
-                    <UserList medias={medias} setMedias={setMedias} />
+                    <UserList medias={medias} tab={tab} setMedias={setMedias} />
                 </div>
             </section>
         </React.Fragment>
