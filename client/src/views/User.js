@@ -9,10 +9,22 @@ export default function User() {
     const [tab, setTab] = useState(['all']);
 
     useEffect(() => {
-        if (localStorage.getItem('todo') === 'null') {
+        const todoArr = JSON.parse(localStorage.getItem('todo'))
+        if (todoArr === 'null') {
             setMedias(false);
         } else {
             API.media.get().then((response) => {
+                if(!response){
+                    return
+                }
+                response.forEach((element, index) => {
+                    for (let i = 0; i < todoArr.length; i++) {
+                        if (todoArr[i].id === element.id) {
+                            response[index].todo = todoArr[i].todo;
+                            break
+                        }
+                    }
+                });
                 setMedias(response);
             });
         }
