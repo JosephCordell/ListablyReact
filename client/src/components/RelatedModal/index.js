@@ -6,7 +6,7 @@ import Stream from '../Stream';
 import './style.css';
 
 const KEY = process.env.REACT_APP_MOVIE_DB_API_KEY;
-export default function RelatedModal({ type, id, displayModal, setDisplayModal }) {
+export default function RelatedModal({ type, id, displayModal, setDisplayModal, media}) {
     const [info, setInfo] = useState([]);
 
     useEffect(() => {
@@ -43,7 +43,7 @@ export default function RelatedModal({ type, id, displayModal, setDisplayModal }
                                         <Stream movieID={id} key={id} />
                                     </div>
                                     <div className="status">
-                                        <ChangeStatus media={type} />
+                                        <ChangeStatus media={media} />
                                     </div>
                                     <div className="close-btn">
                                         <button className="close-btn-text" onClick={() => setDisplayModal(!displayModal)}>
@@ -70,7 +70,7 @@ export default function RelatedModal({ type, id, displayModal, setDisplayModal }
                                         <Stream tvID={id} key={id} />
                                     </div>
                                     <div className="status">
-                                        <ChangeStatus media={type} />
+                                        <ChangeStatus media={media} />
                                     </div>
                                     <div className="close-btn">
                                         <button className="close-btn-text" onClick={() => setDisplayModal(!displayModal)}>
