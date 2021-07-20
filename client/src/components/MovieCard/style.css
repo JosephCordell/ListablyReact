@@ -24,7 +24,7 @@
     width: 100%;
 }
 
-.card-img-date-desc{
+.card-img-date-desc {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -68,13 +68,12 @@
 }
 
 .stream {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    margin-left: 20px;
+    margin-top: 10px;
 }
 
-.availability{
-    text-align: center;
+.availability {
+    margin-bottom: 0;
     font-weight: bold;
     font-style: italic;
 }

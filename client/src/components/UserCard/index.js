@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import './style.css';
 import ChangeStatus from '../ChangeStatus';
@@ -6,12 +5,11 @@ import Stream from '../Stream';
 
 export default function UserCard({ media, id }) {
     const [showCard, setShowCard] = useState(true);
-    if(!showCard){
+    if (!showCard) {
         return null;
     }
 
     return (
-
         <div className={`card-container ${media.mediatype}`}>
             <div
                 className="card-info"
@@ -24,14 +22,19 @@ export default function UserCard({ media, id }) {
             >
                 <img src={`https://image.tmdb.org/t/p/w500${media.poster_path}`} alt={media.mediatype} className="card-image" />
                 <div className="card-title">{media.title}</div>
-                {media.mediatype === 'movie'
-                    ? <><p className="availability">Available online at:</p>
-                    <Stream movieID={media.id} key={media.id} /> </>
-                    : <><p className="availability">Available online at:</p>
-                    <Stream tvID={media.id} key={media.id} /></>}
-                <ChangeStatus displayDropped={true} media={media} setShowCard={setShowCard}/>
+                {media.mediatype === 'movie' ? (
+                    <>
+                        <p className="availability">Available online at:</p>
+                        <Stream movieID={media.id} key={media.id} />{' '}
+                    </>
+                ) : (
+                    <>
+                        <p className="availability">Available online at:</p>
+                        <Stream tvID={media.id} key={media.id} />
+                    </>
+                )}
+                <ChangeStatus displayDropped={true} media={media} setShowCard={setShowCard} />
             </div>
         </div>
-
     );
 }
