@@ -7,7 +7,7 @@ export default function TabFilter({ tab, setTab }) {
     return (
         <React.Fragment>
             {types.map((type) => (
-                <button className="tab" key={type} /* active={tab === type} */ onClick={() => setTab(type)}>
+                <button className="tab" key={type} onClick={() => setTab(type)}>
                     {type}
                 </button>
             ))}

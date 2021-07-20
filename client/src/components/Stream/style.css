@@ -1,13 +1,13 @@
-.logo-container{
+.logo-container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
-.logo-container p{
+.logo-container p {
     font-size: 0.8rem;
 }
 
-.provider-logo{
+.provider-logo {
     margin: 5px;
     width: 50px;
     border-radius: 10px;

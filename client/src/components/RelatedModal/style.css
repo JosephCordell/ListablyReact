@@ -1,4 +1,4 @@
-.modal-container{
+.modal-container {
     position: fixed;
     width: 100%;
     height: 100%;
@@ -6,16 +6,16 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0,0,0,0.8);
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
-.center-modal{
+.center-modal {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.modal-info{
+.modal-info {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     background-color: aliceblue;
@@ -24,34 +24,34 @@
     flex-direction: column;
 }
 
-.image-container{
+.image-container {
     display: flex;
     justify-content: center;
 }
 
-.modal-image{
+.modal-image {
     width: 20vw;
-    height:100%
+    height: 100%;
 }
 
-.status{
+.status {
     display: flex;
     justify-content: center;
     margin-top: 10px;
 }
 
-.close-btn{
+.close-btn {
     margin-top: 10px;
     display: flex;
     justify-content: center;
 }
 
-.close-btn-text{
+.close-btn-text {
     border: none;
     background-color: transparent;
     color: rgb(100, 110, 255);
 }
 
-.close-btn-text:hover{
+.close-btn-text:hover {
     text-decoration: underline;
 }
