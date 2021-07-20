@@ -36,12 +36,12 @@ router.post('/add', authorization, async (req, res) => {
         }
         const stringUserObj = JSON.stringify(userObj);
         user.todo = stringUserObj;
-
         user = await user.save();
         const newMedia = await Media.create({
             ...req.body,
         });
-
+        
+        console.log(`stringUserObj: `, stringUserObj);
         res.status(200).json({ todo: stringUserObj });
     } catch (err) {
         if (err.errors) {

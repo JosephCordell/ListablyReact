@@ -15,9 +15,9 @@ export default function UserList({ medias, setMedias }) {
         }
     };
 
-    
     return (
-        <React.Fragment>{console.log('length', medias.length)}
+        <React.Fragment>
+            {console.log('length', medias.length)}
             {medias.length > 0 ? (
                 <div className="result-container">
                     {medias.map((media) => (
