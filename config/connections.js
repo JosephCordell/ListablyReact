@@ -10,7 +10,7 @@ if (process.env.REACT_APP_JAWSDB_URL) {
         host: 'localhost',
         dialect: 'mysql',
         port: 3306,
-        password: 'password'
+        password: 'password',
     });
 }
 

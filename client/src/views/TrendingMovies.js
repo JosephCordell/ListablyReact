@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import '../App.css'
+import '../App.css';
 import React, { useState, useEffect } from 'react';
 import MovieCard from '../components/MovieCard';
 import axios from 'axios';
@@ -16,14 +16,16 @@ export default function TrendingMovies() {
 
     useEffect(() => {
         async function fetchData() {
-            await axios.get(trendingMoviesApi).then((request) => {
-                setMovies(request.data.results);
-                 setLoading(false);
-            }).catch((error) => console.log(error));
+            await axios
+                .get(trendingMoviesApi)
+                .then((request) => {
+                    setMovies(request.data.results);
+                    setLoading(false);
+                })
+                .catch((error) => console.log(error));
         }
         fetchData();
     }, []);
-
 
     if (loading) return 'Loading...';
     return (
@@ -32,10 +34,10 @@ export default function TrendingMovies() {
                 <h2>Top 20 Trending Movies</h2>
             </div>
 
-            <div className='result-container'>
-            {movies.map((movie) => (
-                <MovieCard movie={movie} key={movie.id} />
-            ))}
+            <div className="result-container">
+                {movies.map((movie) => (
+                    <MovieCard movie={movie} key={movie.id} />
+                ))}
             </div>
         </React.Fragment>
     );

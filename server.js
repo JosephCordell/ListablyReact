@@ -32,7 +32,6 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, './client/build/index.html'));
 });
 
-
 sequelize.sync({ force: false }).then(() => {
     console.log(`Connected to Database`);
     app.listen(PORT, () => {

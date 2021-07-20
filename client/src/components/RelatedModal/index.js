@@ -6,7 +6,7 @@ import Stream from '../Stream';
 import './style.css';
 
 const KEY = process.env.REACT_APP_MOVIE_DB_API_KEY;
-export default function RelatedModal({ type, id, displayModal, setDisplayModal, media}) {
+export default function RelatedModal({ type, id, displayModal, setDisplayModal, media }) {
     const [info, setInfo] = useState([]);
 
     useEffect(() => {

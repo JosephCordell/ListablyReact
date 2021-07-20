@@ -1,12 +1,12 @@
-.hide{
+.hide {
     display: none;
 }
 
-.show{
+.show {
     color: rgb(100, 110, 255);
     cursor: pointer;
 }
 
-.show:hover{
+.show:hover {
     text-decoration: underline;
 }
