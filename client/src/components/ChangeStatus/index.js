@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, {useState} from 'react';
+import React from 'react';
 import './style.css';
 import API from '../../js/API';
 
@@ -17,7 +17,8 @@ export default function ChangeStatus({ media, displayDropped = false, setShowCar
             document.location.replace('/login');
             return;
         }
-        if (mediaDetails.mediatype === 'movie') {
+        console.log(mediaDetails);
+        if (mediaDetails.mediatype === 'movie' || mediaDetails.media_type === 'movie') {
             const missive = {
                 title: mediaDetails.title,
                 release_date: mediaDetails.release_date,
@@ -49,7 +50,7 @@ export default function ChangeStatus({ media, displayDropped = false, setShowCar
             }
         }
 
-        if (mediaDetails.mediatype === 'tv') {
+        if (mediaDetails.mediatype === 'tv'|| mediaDetails.media_type === 'tv') {
             const missive = {
                 title: mediaDetails.name,
                 release_date: mediaDetails.first_air_date,
