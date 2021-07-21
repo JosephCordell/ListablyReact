@@ -78,16 +78,19 @@
     }
 }
 
+
 @media screen and (max-width: 1200px) and (min-width: 800px) {
     .results-container {
         width: 45%;
     }
 
     .card-image {
-        width: 25vh;
+        width: 20vh;
         height: auto;
     }
 }
+
+
 
 .dropDownUser {
     display: flex;

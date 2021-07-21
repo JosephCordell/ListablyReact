@@ -5,6 +5,11 @@
     opacity: 0.6;
     border: 0;
     outline: 0;
+    margin: 3px;
+}
+
+.tab:hover{
+    background-color: lightskyblue;
 }
 
 .tab:active {

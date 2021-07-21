@@ -3,6 +3,9 @@
   border-radius: 15px;
   margin: 20px;
   background: black;
+  width: 20%;
+  min-width: 270px;
+  max-width: 332px;
 }
 
 .inner-user-result-container {
@@ -11,4 +14,35 @@
   align-items: center;
   justify-content: center;
   margin: 20px;
+}
+
+.card-title{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    text-align: center;
+}
+
+@media screen and (max-width: 600px){
+    .user-result-container {
+        width: 80%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .card-image {
+        width: 20vh;
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .user-result-container {
+        width: 40%;
+    }
+
+    .card-image {
+        width: 20vh;
+        height: auto;
+    }
 }
