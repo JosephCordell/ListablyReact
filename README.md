@@ -12,7 +12,7 @@ In a world where streaming platforms are the new method of media consumption, we
 - [Questions](#questions)
 
 ## Usage
-1. Go to [Listably](listably.herokuapp.com)
+1. Go to [Listably](https://listably.herokuapp.com/)
 	
 2. Please create an account or sign in on the top right corner of the page.
 	![Screenshot of the Listably Homepage](./assets/images/signup.png)
