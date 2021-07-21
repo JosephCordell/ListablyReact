@@ -3,7 +3,7 @@ import './style.css';
 import ChangeStatus from '../ChangeStatus';
 import Stream from '../Stream';
 
-export default function UserCard({ media, id }) {
+export default function UserCard({ media, id, setMedias}) {
     const [showCard, setShowCard] = useState(true);
     if (!showCard) {
         return null;
@@ -33,7 +33,7 @@ export default function UserCard({ media, id }) {
                         <Stream tvID={media.id} key={media.id} />
                     </>
                 )}
-                <ChangeStatus displayDropped={true} media={media} setShowCard={setShowCard} />
+                <ChangeStatus setMedias={setMedias} displayDropped={true} media={media} setShowCard={setShowCard} />
                 </div>
         </div>
     );

@@ -3,13 +3,28 @@ import React from 'react';
 import './style.css';
 import API from '../../js/API';
 
-export default function ChangeStatus({ media, displayDropped = false, setShowCard }) {
+export default function ChangeStatus({ media, displayDropped = false, setShowCard, setMedias }) {
     const mediaDetails = media;
 
     const addTodo = (value) => {
         if (value === '6') {
             API.todo.delete(value, mediaDetails.id);
             setShowCard(false);
+            const todoArr = JSON.parse(localStorage.getItem('todo'));
+            API.media.get().then((response) => {
+                if (!response) {
+                    return;
+                }
+                response.forEach((element, index) => {
+                    for (let i = 0; i < todoArr.length; i++) {
+                        if (todoArr[i].id === element.id) {
+                            response[index].todo = todoArr[i].todo;
+                            break;
+                        }
+                    }
+                });
+                setMedias(response);
+            });
             return;
         }
         if (!API.loggedIn()) {
