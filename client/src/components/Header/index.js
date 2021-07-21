@@ -13,7 +13,7 @@ const Header = ({ user, setUser, loggedIn }) => {
     };
 
     return (
-        <nav className={'navbar navbar-expand-lg navbar-light'} style={{ backgroundColor: '#e3f2fd' }}>
+        <nav className={'navbar navbar-expand-lg navbar-dark'} style={{ backgroundColor: 'black' }}>
             <div className={'container-fluid'}>
                 <a className={'navbar-brand'} href="/">
                     Listably

@@ -34,10 +34,10 @@ export default function TrendingMovies() {
                 <h2>Top 20 Trending Movies</h2>
             </div>
 
-            <div className="result-container">
-                {movies.map((movie) => (
-                    <MovieCard movie={movie} key={movie.id} />
-                ))}
+            <div id='big-shell'>
+            {movies.map((movie) => (
+                <MovieCard movie={movie} key={movie.id} />
+            ))}
             </div>
         </React.Fragment>
     );

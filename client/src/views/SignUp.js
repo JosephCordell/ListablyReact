@@ -18,7 +18,12 @@ export default function SignUp() {
                 body: JSON.stringify({ username, email, password }),
                 headers: { 'Content-type': 'application/json' },
             })
-                .then((response) => response.json())
+                .then((response) => {
+                    if (response.status === 200) { response.json() }
+                    else {
+                        throw new Error('email in use')
+                    }
+                })
                 .then((data) => {
                     localStorage.setItem(`loggedIn`, true);
                     localStorage.setItem(`token`, data.token);
@@ -72,7 +77,7 @@ export default function SignUp() {
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
                         />
-                        {errors.username && <p>{errors.username}</p>}
+                        {errors.username && <p className="error">{errors.username}</p>}
                     </div>
                     <div className="form-group">
                         <label htmlFor="email" className="form-label">
@@ -87,7 +92,7 @@ export default function SignUp() {
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                         />
-                        {errors.email && <p>{errors.email}</p>}
+                        {errors.email && <p className="error">{errors.email}</p>}
                     </div>
                     <div className="form-group">
                         <label htmlFor="password" className="form-label">
@@ -102,7 +107,7 @@ export default function SignUp() {
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                         />
-                        {errors.password && <p>{errors.password}</p>}
+                        {errors.password && <p className="error">{errors.password}</p>}
                     </div>
                     <div className="form-group">
                         <label htmlFor="password" className="form-label">
@@ -117,7 +122,7 @@ export default function SignUp() {
                             value={password2}
                             onChange={(e) => setPassword2(e.target.value)}
                         />
-                        {errors.password2 && <p>{errors.password2}</p>}
+                        {errors.password2 && <p className="error">{errors.password2}</p>}
                     </div>
 
                     <div className={'submit-button'}>
@@ -129,7 +134,7 @@ export default function SignUp() {
             </div>
             <div style={{ textAlign: 'center' }}>
                 Have an account?{' '}
-                <a href="/login" style={{ color: 'blue' }}>
+                <a href="/login" className={'special-link-small'}>
                     Sign in!
                 </a>
             </div>

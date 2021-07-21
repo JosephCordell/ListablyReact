@@ -37,12 +37,9 @@ export default function TVCard({ tv }) {
                         )}
                         <div className={'card-info'}>
                             <div className={'title-date card-title'}>{tv.name}</div>
-                            <div className={'description'}>
-                                {' '}
-                                <ReadMore text={tv.overview}>{tv.overview} </ReadMore>{' '}
-                            </div>
-                            <div className="stream">
-                                <p className="availability">Available online at:</p>
+                            <div className={'description'}> <ReadMore text={tv.overview}>{tv.overview} </ReadMore> </div>
+                                <p className='availability'>Available online at:</p>
+                            <div className='stream'>
                                 <Stream tvID={tv.id} key={tv.id} />
                             </div>
                         </div>

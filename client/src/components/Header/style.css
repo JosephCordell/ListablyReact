@@ -1,13 +1,3 @@
-.search {
-    width: 30vw;
-    margin-bottom: 0;
-    padding-bottom: 0;
-}
-
-.search-dropdown {
-    border-radius: 5px;
-    background-color: transparent;
-}
 
 #search-button {
     border-radius: 5px;
@@ -20,4 +10,12 @@
 .login {
     width: 10vw;
     margin-left: 10px;
+}
+
+.nav-item{
+    white-space: nowrap;
+}
+
+#navbarNav{
+    width: auto;
 }

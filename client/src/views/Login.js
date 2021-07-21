@@ -54,7 +54,7 @@ export default function SignIn() {
                 </div>
             </div>
             <div className="container-user">
-                <h2>Login</h2>
+                <h1 className="login-text">Login</h1>
 
                 <form className="loginform" onSubmit={loginFormHandler}>
                     <div className="form-group">
@@ -70,7 +70,9 @@ export default function SignIn() {
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                         />
-                        {errors.email && <p>{errors.email}</p>}
+                        
+                        {errors.email && <p className="error">{errors.email}</p>}
+                        
                     </div>
                     <div className="form-group">
                         <label htmlFor="password" className="form-label">
@@ -85,7 +87,7 @@ export default function SignIn() {
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                         />
-                        {errors.password && <p>{errors.password}</p>}
+                        {errors.password && <p className="error">{errors.password}</p>}
                     </div>
                     <div className={'submit-button'}>
                         <button type="submit" className={'btn btn-primary btn-block'}>
@@ -97,7 +99,7 @@ export default function SignIn() {
 
             <div style={{ textAlign: 'center' }}>
                 Don't have an account?{' '}
-                <a href="/signup" style={{ color: 'blue' }}>
+                <a href="/signup" className={'special-link-small'}>
                     Sign up!
                 </a>
             </div>

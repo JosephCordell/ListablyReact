@@ -1,11 +1,38 @@
 /* *{ border: 1px solid red; } */
 h1 {
     padding: 20px;
-    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+h1:hover {
+    text-shadow: .5px .5px palegoldenrod;
+    color: orchid;
+}
+
+h2 {
+    /* text-align: center; */
+    font-family: 'Poppins', sans-serif;
+}
+
+h3 {
+    text-align: center;
 }
 
 a {
     text-decoration: none;
+}
+
+.special-link {
+    font-size: 1.5rem;
+    color: ghostwhite;  
+    transform: skew(5deg);
+    display: flex;
+    justify-content: center;
+}
+
+.special-link:hover {
+    color: orchid;
+    transform: skew(10deg);
 }
 
 .fancy {
@@ -13,17 +40,35 @@ a {
     color: white;
     font-weight: bold;
 }
+
 .container {
     position: relative;
-    width: 400px;
-    height: 400px;
+    width: auto;
+    height: fit-content;
     overflow: hidden;
-    border-radius: 50%;
 }
 
 .image {
-    width: 100%;
-    height: auto;
+    width: 18vw;
+    height: 100%;
+    margin: 10px;
+    border-top: 6px solid ghostwhite;
+    border-right: 1px solid ghostwhite;
+    border-bottom: 1px solid ghostwhite;
+    border-left: 6px solid ghostwhite;
+    border-radius: 15px;
+}
+
+button {
+    border-radius: 10px;
+    background-color: gainsboro;
+    font-weight: bold;
+}
+
+select {
+    border-radius: 10px;
+    background-color: gainsboro;
+    font-weight: bold;
 }
 
 .overlay {
@@ -58,7 +103,7 @@ a {
 main {
     display: flex;
 }
-
+s
 section {
     width: 100%;
     margin-top: 20px;
@@ -71,20 +116,8 @@ section {
     padding-bottom: 0;
 }
 
-.card-container {
-    background-color: lightgray;
-    padding: 20px;
-    border-radius: 10px;
-    margin-right: 20px;
-    margin-top: 10px;
-}
-
 .date {
     margin-left: 10px;
-}
-
-.description {
-    width: 50%;
 }
 
 .myRating {
@@ -95,13 +128,6 @@ section {
     margin: 20px;
 }
 
-.result-container {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    justify-content: center;
-}
-
 .error {
     display: flex;
     flex-direction: column;
@@ -109,6 +135,7 @@ section {
 }
 
 .container-user {
+    color: black;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -124,14 +151,36 @@ section {
     padding-bottom: 20px;
 }
 
+.login-text{
+    font-family: 'Poppins', sans-serif;
+}
+
+.login-text:hover{
+    text-shadow: none;
+    color: black;
+    text-decoration: none;
+}
+
+.special-link-small{
+    font-size: 1rem;
+    color: white;
+    text-decoration: underline;
+}
+
 .form-group {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     margin: 2px;
 }
 
 .form-group label {
     margin-right: 5px;
+}
+
+.error{
+    font-size: 0.8rem;
+    color: red;
 }
 
 .submit-button {
@@ -166,12 +215,13 @@ section {
 .modal-header {
     padding: 2px 16px;
     background-color: #ec1616;
-    color: white;
+    color: black;
 }
 
 /* Modal Body */
 .modal-body {
     padding: 2px 16px;
+    color: black;
 }
 
 /* The Modal (background) */
@@ -235,4 +285,51 @@ section {
     display: flex;
     justify-content: center;
     font-weight: bold;
+}
+
+.home-container {
+    background-color: black;
+    margin: 45px;
+    border: 2px solid ghostwhite;
+    border-radius: 15px;
+    width: fit-content;
+    height: auto;
+}
+
+#big-shell {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+@media screen and (min-width: 1200px) {
+    #big-shell{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media screen  and (max-width: 1200px) {
+    #big-shell{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        justify-content: center;
+    }
+}
+
+@media screen and  (min-width: 992px){
+    #big-shell{
+        min-width: 30%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        justify-content: center;
+    }
 }

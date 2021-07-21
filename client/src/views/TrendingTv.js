@@ -24,17 +24,17 @@ export default function TrendingTv({ tvResults }) {
         fetchData();
     }, []);
 
-    if (loading) return 'Loading...';
-    return (
-        <React.Fragment>
-            <div className={'results'}>
-                <h2>Top 20 Trending TV Shows</h2>
-            </div>
-            <div className="result-container">
-                {tvShows.map((tv) => (
-                    <TVCard tv={tv} key={tv.id} />
-                ))}
-            </div>
-        </React.Fragment>
-    );
-}
+if (loading) return 'Loading...';
+return (
+  <React.Fragment>
+    <div className={'results'}>
+      <h2>Top 20 Trending TV Shows</h2>
+    </div>
+    <div id='big-shell'>
+    {tvShows.map((tv) => (
+      <TVCard tv={ tv } key={ tv.id }/>
+    ))}
+    </div>
+</React.Fragment>
+);
+};

@@ -34,7 +34,7 @@ export default function RelatedModal({ type, id, displayModal, setDisplayModal, 
                                         <img src={`https://image.tmdb.org/t/p/w500${info.poster_path}`} alt="movie" className={'modal-image'} />
                                     </div>
                                     <div className={'card-title'}>{info.title}</div>
-                                    <div className={'description'}>
+                                    <div className={'modal-description'}>
                                         {' '}
                                         <ReadMore text={info.overview}>{info.overview}</ReadMore>{' '}
                                     </div>
@@ -61,7 +61,7 @@ export default function RelatedModal({ type, id, displayModal, setDisplayModal, 
                                         <img src={`https://image.tmdb.org/t/p/w500${info.poster_path}`} alt="tv" className={'modal-image'} />
                                     </div>
                                     <div className={'title-date card-title'}>{info.name}</div>
-                                    <div className={'description'}>
+                                    <div className={'modal-description'}>
                                         {' '}
                                         <ReadMore text={info.overview}>{info.overview} </ReadMore>{' '}
                                     </div>
