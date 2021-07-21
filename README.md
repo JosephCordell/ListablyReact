@@ -43,4 +43,6 @@ In a world where streaming platforms are the new method of media consumption, we
 ## Questions
 If you have any questions or see any issues, please submit and [issue](https://github.com/JosephCordell/Listably/issues) on GitHub!
 
+Source data provided by The Movie DB & JustWatch
+
 
