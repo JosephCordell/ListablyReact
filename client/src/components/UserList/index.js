@@ -24,7 +24,7 @@ export default function UserList({ medias, setMedias, value, type, id, tab = 'Al
             {medias.length > 0 ? (
                 <div id="big-shell">
                     {filter.map((media) => (
-                        <UserCard media={media} type={type} id={id} key={media.id} />
+                        <UserCard setMedias={setMedias} media={media} type={type} id={id} key={media.id} />
                     ))}
                 </div>
             ) : (
@@ -33,46 +33,3 @@ export default function UserList({ medias, setMedias, value, type, id, tab = 'Al
         </React.Fragment>
     );
 }
-
-/* 
-<React.Fragment>
-{medias.length > 0 ? (
-    tab === 'All' ? (
-        <div className="result-container">
-            {medias.map((media) => (
-                <UserCard media={media} type={type} id={id} key={media.id} />
-            ))}
-        </div>
-    ) : (
-        <>
-            {medias.filter((media) => media.mediatype !== tab)}
-            <div className="result-container">
-                {medias.map((media) => (
-                    <UserCard media={media} type={type} id={id} key={media.id} />
-                ))}
-            </div>
-        </>
-    )
-) : (
-    <div className="empty-list"> Nothing added yet. Add to your list by searching or looking at trending</div>
-)}
-</React.Fragment>
-);
-}
-
-/* 
-{tab === 'All' ? (
-<UserCard media={media} type={type} id={id} key={media.id} />
-) : tab === 'Movie' ? (
-media.mediatype === 'Movie' ? (
-<UserCard media={media} type={type} id={id} key={media.id} />
-) : (
-''
-)
-) : (
-media.mediatype === 'TV shows' ? (
-<UserCard media={media} type={type} id={id} key={media.id} />
-) : (
-<p>No movies found</p>
-)
-)} */

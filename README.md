@@ -15,22 +15,28 @@ In a world where streaming platforms are the new method of media consumption, we
 1. Go to [Listably](listably.herokuapp.com)
 	
 2. Please create an account or sign in on the top right corner of the page.
-	![Screenshot of the Listably Homepage](Please attach homepage here)
+	![Screenshot of the Listably Homepage](./assets/images/signup.png)
 
 3. Navigate to the trending page by clicking Movies/TV Shows on the nav bar or the circular image from the home page or use the search bar to conduct a search.</br>
-	![Screenshot of the Listably Homepage](Please attach path to homepage screenshot here)
+	![Screenshot of the Listably Homepage](./assets/images/homepage.png)
 
 4. Add media that you would like to keep track on by using the dropdown on each card. <br>
-    ![Screenshot of the Listably Trending movies](Please attach path to trending movies screenshot here)
+    ![Screenshot of the Listably Trending movies](./assets/images/add-media.png)
 
-5. Click on "My List" to see the media that you have saved to your list. Use the column on the left to filter your results.
-    ![Screenshot of the Listably User Page](Please attach path to user screenshot here)
+5. Check out similar movies by clicking on "More Like This" <br>
+    ![Screenshot of the Listably Similar Media](./assets/images/similar-media.png)
+
+6. Click on media poster under "More Like This" to view more details <br>
+![Screenshot of the Listably Similar Modal](./assets/images/similar-modal.png)
+
+7. Click on "My List" to see the media that you have saved to your list. Use the column on the left to filter your results.
+    ![Screenshot of the Listably User Page](./assets/images/user-list.png)
 
 ## Contribution
 #### Contributors
 [Joseph Cordell](https://github.com/JosephCordell), 
 [Paul Jeffery](https://github.com/Paulndrwjeffrey), 
-[Melissa Tan](https://github.com/melissa-tan), and 
+[Melissa Tan](https://github.com/melissa-tan), 
 [Kila Weeks](https://github.com/kilaweeks)
 
 

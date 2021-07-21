@@ -5,6 +5,7 @@
     border: 2px solid ghostwhite;
     border-radius: 15px;
     width: 95%;
+    max-width: 380px;
 }
 
 .card-info {
@@ -64,6 +65,5 @@
 .myRating {
     display: flex;
     margin-top: 10px;
-    width: 100%;
     justify-content: center;
 }
