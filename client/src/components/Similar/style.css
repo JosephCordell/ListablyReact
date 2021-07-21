@@ -4,21 +4,19 @@
 }
 
 .similar-image {
-<<<<<<< HEAD
   max-width: 18vh;
   max-height: auto;
   margin: 8px;
-  border: 4px solid orchid;
+  border: 2px solid orchid;
   border-radius: 15px;
-=======
-    max-width: 18vw;
-    max-height: auto;
-    border: 5px solid black;
-    border-radius: 15px;
->>>>>>> main
 }
 
 .similar-container {
     display: flex;
     overflow-x: auto;
+}
+
+.button-modal {
+  background: transparent;
+  border: none;
 }

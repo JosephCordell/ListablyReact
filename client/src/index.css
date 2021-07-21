@@ -1,8 +1,12 @@
 body {
+  height: 100%;
   margin: 0;
   font-family: 'Montserrat', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: black;
-  color: ghostwhite;
+  background: rgb(121,121,121);
+  background: linear-gradient(180deg, rgba(121,121,121,1) 0%, rgba(0,0,0,1) 100%);
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  color: whitesmoke;
 } 

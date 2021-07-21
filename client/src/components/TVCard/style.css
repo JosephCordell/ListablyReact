@@ -1,17 +1,6 @@
-@media screen and (min-width: 1200px) {
-    .results-container {
-        width: 30%;
-        }
-}
-
-@media screen and (max-width: 1200px) and (min-width: 750px) {
-    .results-container {
-        width: 50%;
-    }
-}
-
 .results-container {
-    background-color: black;
+    background: rgb(55,55,55);
+    background: radial-gradient(circle, rgba(55,55,55,1) 0%, rgba(0,0,0,1) 100%);       
     margin: 7px 10px 7px 10px;
     border: 2px solid ghostwhite;
     border-radius: 15px;
@@ -26,78 +15,55 @@
 
 .card-img-date-desc{
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
     width: 100%;
 }
 
 .card-image {
-    width: 28vh;
-    height: auto;
+    width: auto;
+    height: 30vh;
     margin: 10px;
-    border-top: 6px solid ghostwhite;
+    border-top: 3px solid ghostwhite;
     border-right: 1px solid ghostwhite;
     border-bottom: 1px solid ghostwhite;
-    border-left: 6px solid ghostwhite;
+    border-left: 3px solid ghostwhite;
     border-radius: 15px;
 }
 
 .title-date {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
 }
 
 .card-title {
-    display: flex;
-    flex-direction: column;
     margin-bottom: 0;
     margin-left: 20px;
-    font-size: 1.3rem;
+    font-size: 1.3rem; 
     font-weight: bold;
 }
+
 .date {
     margin-left: 10px;
 }
 
 .description {
-    margin: 10px 30px 10px 30px;
-    font-size: 1.5vh;
+    margin-left: 20px;
+    width: 90%;
 }
 
-.stream {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.stream{
+    margin: 5px;
 }
 
 .availability{
-    text-align: center;
+    margin-bottom: 0;
     font-weight: bold;
+    font-size: 0.9rem;
     font-style: italic;
 }
 
 .myRating {
     display: flex;
+    margin-top: 10px;
+    width: 100%;
     justify-content: center;
-    margin: 10px;   
-}
-
-@media screen and (min-width: 1200px) {
-    .results-container {
-        width: 30%;
-    }
-}
-
-@media screen and (max-width: 1200px) and (min-width: 800px) {
-    .results-container {
-        width: 45%;
-    }
-
-    .card-image {
-        width: 25vh;
-        height: auto;
-    }
 }

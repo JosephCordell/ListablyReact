@@ -24,7 +24,6 @@ export default function TrendingTv({ tvResults }) {
         fetchData();
     }, []);
 
-<<<<<<< HEAD
 if (loading) return 'Loading...';
 return (
   <React.Fragment>
@@ -39,19 +38,3 @@ return (
 </React.Fragment>
 );
 };
-=======
-    if (loading) return 'Loading...';
-    return (
-        <React.Fragment>
-            <div className={'results'}>
-                <h2>Top 20 Trending TV Shows</h2>
-            </div>
-            <div className="result-container">
-                {tvShows.map((tv) => (
-                    <TVCard tv={tv} key={tv.id} />
-                ))}
-            </div>
-        </React.Fragment>
-    );
-}
->>>>>>> main

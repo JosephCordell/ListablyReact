@@ -33,12 +33,7 @@ export default function User() {
     return (
         <React.Fragment>
             <TabFilter tab={tab} setTab={setTab} />
-
-            <section>
-                <div className="">
                     <UserList medias={medias} tab={tab} setMedias={setMedias} />
-                </div>
-            </section>
         </React.Fragment>
     );
 }

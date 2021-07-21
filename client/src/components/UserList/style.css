@@ -1,17 +1,6 @@
-@media screen and (min-width: 1200px) {
-    .results-container {
-        width: 30%;
-        }
-}
-
-@media screen and (max-width: 1200px) and (min-width: 750px) {
-    .results-container {
-        width: 50%;
-    }
-}
-
 .results-container {
-    background-color: black;
+    background: rgb(55,55,55);
+    background: radial-gradient(circle, rgba(55,55,55,1) 0%, rgba(0,0,0,1) 100%);       
     margin: 7px 10px 7px 10px;
     border: 2px solid ghostwhite;
     border-radius: 15px;
@@ -33,13 +22,13 @@
 }
 
 .card-image {
-    width: 28vh;
-    height: auto;
+    width: auto;
+    height: 30vh;
     margin: 10px;
-    border-top: 6px solid ghostwhite;
+    border-top: 3px solid ghostwhite;
     border-right: 1px solid ghostwhite;
     border-bottom: 1px solid ghostwhite;
-    border-left: 6px solid ghostwhite;
+    border-left: 3px solid ghostwhite;
     border-radius: 15px;
 }
 
@@ -67,10 +56,8 @@
     font-size: 1.5vh;
 }
 
-.stream {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.stream{
+    margin: 5px;
 }
 
 .availability{

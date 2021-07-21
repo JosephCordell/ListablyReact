@@ -10,12 +10,11 @@ h1:hover {
 }
 
 h2 {
-    text-align: center;
+    /* text-align: center; */
     font-family: 'Poppins', sans-serif;
 }
 
 h3 {
-    color: orchid;
     text-align: center;
 }
 
@@ -48,7 +47,7 @@ a {
 
 .image {
     width: auto;
-    height: auto;
+    height: 100%;
     margin: 10px;
     border-top: 6px solid ghostwhite;
     border-right: 1px solid ghostwhite;
@@ -61,7 +60,6 @@ button {
     border-radius: 10px;
     background-color: gainsboro;
     font-weight: bold;
-    color: orchid;
 }
 
 select {
@@ -102,7 +100,7 @@ select {
 main {
     display: flex;
 }
-
+s
 section {
     width: 100%;
     margin-top: 20px;
@@ -274,7 +272,7 @@ section {
 #big-shell {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-around;
 }
 
@@ -283,7 +281,7 @@ section {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        align-items: flex-start;
+        align-items: center;
         justify-content: space-around;
     }
 }

@@ -50,8 +50,8 @@ export default function MovieCard({ movie }) {
                             {' '}
                             <ReadMore text={movie.overview}>{movie.overview}</ReadMore>{' '}
                         </div>
-                        <div className="stream">
                             <p className="availability">Available online at:</p>
+                        <div className="stream">
                             <Stream movieID={movie.id} key={movie.id} />
                         </div>
                     </div>

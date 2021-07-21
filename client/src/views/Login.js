@@ -54,7 +54,7 @@ export default function SignIn() {
                 </div>
             </div>
             <div className="container-user">
-                <h2>Login</h2>
+                <h1>Login</h1>
 
                 <form className="loginform" onSubmit={loginFormHandler}>
                     <div className="form-group">
@@ -97,7 +97,7 @@ export default function SignIn() {
 
             <div style={{ textAlign: 'center' }}>
                 Don't have an account?{' '}
-                <a href="/signup" style={{ color: 'blue' }}>
+                <a href="/signup" className={'special-link'}>
                     Sign up!
                 </a>
             </div>

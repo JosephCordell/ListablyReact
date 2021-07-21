@@ -29,7 +29,6 @@ export default function Homepage() {
     if (loading) return 'Loading...';
     return (
         <React.Fragment>
-<<<<<<< HEAD
                 <h1>Listably</h1>
                 <h3>Use Listably to keep track of movies and shows you're watching or want to watch</h3>
             <div id={'big-shell'}>
@@ -41,43 +40,6 @@ export default function Homepage() {
                         <img src= {`https://image.tmdb.org/t/p/w500${ trendingTv.poster_path }`} alt="TV" className={'image'} />    
                         <h1><a href="/trending-tv" className={'special-link'}>TV</a></h1>
                     </div>  
-=======
-            <div className={'p-4 mb-4 bg-light rounded-3'}>
-                <div className={'container-fluid py-5'}>
-                    <h1 className={'listably display-5 fw-bold'}>Listably</h1>
-                    <p className={'col-md-8 fs-4'}>Use Listably to keep track of movies and shows you're watching or want to watch</p>
-                </div>
-            </div>
-
-            <div className={'container-xl'}>
-                <div className={'row row-cols-2'}>
-                    <div className={'col p-2'}>
-                        <div className={'container'}>
-                            <img src={`https://image.tmdb.org/t/p/w500${trendingMovie.poster_path}`} alt="Movie" className={'image'} />
-                            <div className={'overlay'}>
-                                <div className={'col-lg text'}>
-                                    <a href="/trending-movies" className={'fancy'}>
-                                        Movies
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className={'col p-2'}>
-                        <div className={'container'}>
-                            <img src={`https://image.tmdb.org/t/p/w500${trendingTv.poster_path}`} alt="TV" className={'image'} />
-                            <div className={'overlay'}>
-                                <div className={'col-lg text'}>
-                                    <a href="/trending-tv" className={'fancy'}>
-                                        TV Shows
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
->>>>>>> main
             </div>
         </React.Fragment>
     );

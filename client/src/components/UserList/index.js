@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import React, { useState } from 'react';
-=======
 import React, { useState, useEffect } from 'react';
->>>>>>> main
 import './style.css';
 import UserCard from '../UserCard';
 
@@ -26,7 +22,7 @@ export default function UserList({ medias, setMedias, value, type, id, tab = 'Al
     return (
         <React.Fragment>
             {medias.length > 0 ? (
-                <div className="result-container">
+                <div id="big-shell">
                     {filter.map((media) => (
                         <UserCard media={media} type={type} id={id} key={media.id} />
                     ))}

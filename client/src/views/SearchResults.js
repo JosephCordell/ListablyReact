@@ -54,7 +54,7 @@ export default function SearchResults({ user, setUser }) {
                 </h2>
             </div>
             <TabFilter tab={tab} setTab={setTab} />
-            <div className="result-container">
+            <div id="big-shell">
                 {tab === 'Movies' ? (
                     <>
                         {movies.length > 0 ? (
