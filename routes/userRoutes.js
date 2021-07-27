@@ -66,9 +66,10 @@ router.post('/signup', async (req, res) => {
             req.session.user_id = userData.id;
             req.session.logged_in = true;
             req.session.token = jwt.sign({ data: userData.id }, process.env.JWTSECRET, { expiresIn: '365d' });
-            res.status(200).json({ token: req.session.token });
+            res.status(200).json({ todo: userData.todo, ratings: userData.ratings, logged_in: true, token: req.session.token });
         });
     } catch (err) {
+        console.log(err);
         res.status(400).json(err);
     }
 });

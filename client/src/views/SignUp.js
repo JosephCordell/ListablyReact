@@ -18,12 +18,7 @@ export default function SignUp() {
                 body: JSON.stringify({ username, email, password }),
                 headers: { 'Content-type': 'application/json' },
             })
-                .then((response) => {
-                    if (response.status === 200) { response.json() }
-                    else {
-                        throw new Error('email in use')
-                    }
-                })
+                .then((response) => response.json())
                 .then((data) => {
                     localStorage.setItem(`loggedIn`, true);
                     localStorage.setItem(`token`, data.token);
@@ -34,6 +29,7 @@ export default function SignUp() {
                 .catch((err) => {
                     console.log(err);
                     setHideModal(false);
+                    localStorage.removeItem(`loggedIn`);
                 });
         };
         const response = validate({ username, email, password, password2 });
