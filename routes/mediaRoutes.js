@@ -3,6 +3,12 @@ const { Media, User } = require('../models');
 const { Op } = require('sequelize');
 const jwt = require('jsonwebtoken');
 const { authorization } = require('../config/authorization');
+require('dotenv').config();
+const axios = require('axios')
+
+const key = process.env.REACT_APP_MOVIE_DB_API_KEY;
+const trendingMoviesApi = `https://api.themoviedb.org/3/trending/movie/day?api_key=${key}`;
+const trendingTVApi = `https://api.themoviedb.org/3/trending/tv/day?api_key=${key}`;
 
 router.post('/add', authorization, async (req, res) => {
     try {
@@ -130,6 +136,24 @@ router.delete('/delete', async (req, res) => {
     user.todo = stringUserObj;
 
     user = await user.save();
+});
+
+router.get('/top20/:id', async (req, res) => {
+    if (req.params.id === 'movie') {
+        await axios(trendingMoviesApi)
+        .then((response) => { 
+            console.log(`movies!`);
+            res.send(response.data)
+        })
+    } 
+    if ( req.params.id === 'tv') {
+        //res.send(`movies works`)
+
+        await axios.get(trendingTVApi)
+        .then((response) => {
+            res.send(response.data.results)
+        })
+    }
 });
 
 module.exports = router;

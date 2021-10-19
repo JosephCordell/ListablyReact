@@ -14,9 +14,9 @@ export default function TrendingTv({ tvResults }) {
     useEffect(() => {
         async function fetchData() {
             await axios
-                .get(URL)
-                .then((request) => {
-                    setTvShows(request.data.results);
+                .get('/api/media/top20/tv')
+                .then((response) => {
+                    setTvShows(response);
                     setLoading(false);
                 })
                 .catch((error) => console.log(error));

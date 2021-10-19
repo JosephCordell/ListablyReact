@@ -16,10 +16,17 @@ export default function TrendingMovies() {
 
     useEffect(() => {
         async function fetchData() {
-            await axios
-                .get(trendingMoviesApi)
-                .then((request) => {
-                    setMovies(request.data.results);
+            await fetch('/api/media/top20/movie', {
+                method: 'GET',
+                headers: { 'Content-type': 'application/json' },
+            })
+            .then((response) => {
+                response = response.json()
+                console.log(`use effect`);
+                    console.log(response);
+                    console.log(`response.data.results`);
+                    console.log(response.results);
+                    setMovies(response.results);
                     setLoading(false);
                 })
                 .catch((error) => console.log(error));
@@ -33,7 +40,8 @@ export default function TrendingMovies() {
             <div className={'results'}>
                 <h2>Top 20 Trending Movies</h2>
             </div>
-
+            {console.log(`typeof`)}
+            {console.log(typeof(movies))}
             <div id='big-shell'>
             {movies.map((movie) => (
                 <MovieCard movie={movie} key={movie.id} />
