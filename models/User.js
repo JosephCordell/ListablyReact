@@ -1,4 +1,4 @@
-const { Model, DataTypes, BLOB } = require('sequelize');
+const { Model, DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
 const sequelize = require('../config/connections');
 
@@ -36,9 +36,8 @@ User.init(
             },
         },
         todo: {
-            type: DataTypes.BLOB,
+            type: DataTypes.TEXT,
             allowNull: true,
-
         },
         ratings: {
             type: DataTypes.STRING,

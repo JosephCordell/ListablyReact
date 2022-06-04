@@ -29,17 +29,23 @@ export default function Homepage() {
     if (loading) return 'Loading...';
     return (
         <React.Fragment>
-                <h1>Listably</h1>
-                <h3>Use Listably to keep track of movies and shows you're watching or want to watch</h3>
+            <h1>Listably</h1>
+            <h3>Use Listably to keep track of movies and shows you're watching or want to watch</h3>
             <div id={'big-shell'}>
+                <a href="/trending-movies" >
                     <div className={'home-container'}>
-                        <img src= {`https://image.tmdb.org/t/p/w500${ trendingMovie.poster_path }`} alt="Movie" className={'image'}/>
+                        <img src={`https://image.tmdb.org/t/p/w500${trendingMovie.poster_path}`} alt="Movie" className={'image'} />
+
                         <h1><a href="/trending-movies" className={'special-link'}>MOVIES</a></h1>
-                    </div> 
-                    <div className={'home-container'}>          
-                        <img src= {`https://image.tmdb.org/t/p/w500${ trendingTv.poster_path }`} alt="TV" className={'image'} />    
-                        <h1><a href="/trending-tv" className={'special-link'}>TV</a></h1>
-                    </div>  
+                    </div>
+                </a>
+                <a href="/trending-tv" >
+
+                <div className={'home-container'}>
+                    <img src={`https://image.tmdb.org/t/p/w500${trendingTv.poster_path}`} alt="TV" className={'image'} />
+                    <h1><a href="/trending-tv" className={'special-link'}>TV</a></h1>
+                </div>
+                </a>
             </div>
         </React.Fragment>
     );
